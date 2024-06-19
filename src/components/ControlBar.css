@@ -1,0 +1,49 @@
+.cb {
+  margin-left: 35vw;
+  margin-right: 35vw;
+  margin-top: 2vh;
+  height: 4vh;
+  background-color: #28282e;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.cbButton {
+  background-color: transparent;
+  border: none; /* Remove the border */
+  cursor: pointer;
+  transition: transform 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.cbOptionIcon {
+  margin-left: 0.5vw;
+  font-size: 16px;
+  margin-top: -0.1vh;
+  color: #93959477;
+}
+
+.cbButtonText {
+  font-family: "Roboto Mono", monospace;
+  color: #93959477;
+  font-size: 16px;
+  margin-left: 6px;
+}
+
+.cbButton:hover .cbOptionIcon {
+  color: #bca441; /* Change the icon color on hover */
+}
+
+.cbButton:hover .cbButtonText {
+  color: #bca441; /* Change the icon color on hover */
+}
+
+.cbDivider {
+  height: 30px;
+  width: 4px;
+  background-color: #93959442;
+  margin-left: 10px;
+  margin-right: 10px;
+}

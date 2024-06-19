@@ -1,0 +1,16 @@
+.inputArea {
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding-top: 10vh;
+}
+
+.inputParagraph {
+  font-family: "Roboto Mono", monospace;
+  color: #93959477;
+  font-size: 36px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 3; /* Show only the first 3 lines */
+  line-clamp: 3;
+}
