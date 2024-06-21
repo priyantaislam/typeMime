@@ -10,8 +10,10 @@ import {
 function NavBar() {
   return (
     <div className="nv">
-      <FontAwesomeIcon className="terminalIcon" icon={faTerminal} />
-      <h1 className="nvTitle">TypeDash</h1>
+      <div className="logo">
+        <FontAwesomeIcon className="terminalIcon" icon={faTerminal} />
+        <h1 className="nvTitle">TypeDash</h1>
+      </div>
       <button className="nvButton">
         <FontAwesomeIcon className="nvOptionIcon" icon={faKeyboard} />
       </button>

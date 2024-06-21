@@ -1,17 +1,27 @@
 import "./InputArea.css";
-
+import React, { useState, ChangeEvent } from "react";
 function InputArea() {
+  const [inputValue, setInputValue] = useState<string>("");
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    console.log(e.target.value);
+  };
   return (
     <div className="inputArea">
       <p className="inputParagraph">
+        <span className="blinking-cursor"></span>
         The quick brown fox jumps over the lazy dog Swift zephyrs blow vexing
-        daft Jim How razorbackjumping frogs can level six piqued gymnasts Pack
-        my box with five dozen liquor jugs Jackdaws love my big sphinx of quartz
-        The five boxing wizards jump quickly Bright vixens jump dozy fowl quack
-        Quick wafting zephyrs vex bold Jim Sphinx of black quartz judge my vow
-        The lazy dog jumps over the quick brown fox Jinxed wizards pluck ivy
-        from the big quilt
+        daft Jim the quick brown fox jumps over the lazy dog Swift zephyrs blow
+        vexing daft Jim the quick brown fox jumps over the lazy dog Swift
+        zephyrs blow vexing daft Jim
       </p>
+      <input
+        type="text"
+        className="invisible-input"
+        value={inputValue}
+        onChange={handleChange}
+      />
     </div>
   );
 }

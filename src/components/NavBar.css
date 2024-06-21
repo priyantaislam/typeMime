@@ -2,8 +2,13 @@
   height: 10vh;
   display: flex;
   align-items: center;
+  gap: 1vw;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+}
 .nvTitle {
   font-family: "Roboto Mono", monospace;
   color: #c5c6c1;
