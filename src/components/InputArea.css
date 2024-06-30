@@ -31,7 +31,7 @@
 .blinking-cursor {
   font-size: 36px;
   color: #bca441;
-  border: 1px solid #bca441;
+  border: 0.5px solid #bca441;
   animation: blink 1s step-end infinite;
   margin-top: -10vh;
   border-radius: 4px;

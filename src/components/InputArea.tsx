@@ -21,10 +21,23 @@ function InputArea() {
   const part1 = text.slice(0, splitIndex);
   const part2 = text.slice(splitIndex);
 
+  const shouldRed = (index: number) => {
+    return inputValue[index] === part1[index];
+  };
+
   return (
     <div className="inputArea">
       <div className="text-container">
-        <span style={{ color: "#bca441" }}>{part1}</span>
+        <span style={{ color: "#bca441" }}>
+          {part1.split("").map((char, index) => (
+            <span
+              key={index}
+              style={{ color: shouldRed(index) ? "#c5c6c1" : "#c52e42" }}
+            >
+              {char}
+            </span>
+          ))}
+        </span>
         <span className="blinking-cursor"></span>
         <span>{part2}</span>
       </div>
