@@ -31,7 +31,7 @@
 
 .nvButton {
   background-color: transparent;
-  border: none; /* Remove the border */
+  border: none;
   cursor: pointer;
   transition: transform 0.3s;
 }
@@ -44,5 +44,5 @@
 }
 
 .nvButton:hover .nvOptionIcon {
-  color: #c5c6c1; /* Change the icon color on hover */
+  color: #c5c6c1;
 }

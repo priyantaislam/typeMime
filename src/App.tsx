@@ -4,6 +4,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import InputArea from "./components/InputArea";
 import ControlBar from "./components/ControlBar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <NavBar />
       <ControlBar />
       <InputArea />
+      <Footer />
     </div>
   );
 }

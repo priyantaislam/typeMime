@@ -1,0 +1,39 @@
+.footer {
+  padding: 20px;
+  padding-bottom: 5vh;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-left: 10vw;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 2vw;
+}
+
+.footer-icons a {
+  font-size: 16px;
+  color: #93959477;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.footer-icons a:hover {
+  color: #c5c6c1;
+}
+
+.source-code-icon {
+  font-size: 28px;
+  color: #93959477;
+  margin-top: 0.2vh;
+  transition: color 0.3s ease;
+}
+
+.source-code-icon:hover {
+  color: #c5c6c1;
+}
