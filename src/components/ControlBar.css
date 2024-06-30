@@ -40,12 +40,16 @@
   float: left;
 }
 
-.cbButton:hover .cbOptionIcon,
+.cbButton:hover .cbOptionIcon {
+  color: #c5c6c1;
+}
 .cbButton.selected .cbOptionIcon {
   color: #bca441; /* Change the icon color on hover or when selected */
 }
 
-.cbButton:hover .cbButtonText,
+.cbButton:hover .cbButtonText {
+  color: #c5c6c1;
+}
 .cbButton.selected .cbButtonText {
   color: #bca441; /* Change the text color on hover or when selected */
 }
