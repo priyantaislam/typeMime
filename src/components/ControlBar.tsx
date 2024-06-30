@@ -5,34 +5,107 @@ import {
   faQuoteLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState, ChangeEvent } from "react";
 
-function ControlBar() {
+const ControlBar: React.FC = () => {
+  // Set default selected options
+  const [selectedOption, setSelectedOption] = useState<string>("time");
+  const [selectedNumber, setSelectedNumber] = useState<string>("15");
+
+  const handleOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedOption(event.target.value);
+  };
+
+  const handleNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedNumber(event.target.value);
+  };
+
   return (
     <div className="cb">
-      <button className="cbButton">
+      <label
+        className={`cbButton ${selectedOption === "time" ? "selected" : ""}`}
+      >
+        <input
+          type="radio"
+          name="option"
+          value="time"
+          checked={selectedOption === "time"}
+          onChange={handleOptionChange}
+          className="cbRadioButton"
+        />
         <FontAwesomeIcon className="cbOptionIcon" icon={faClock} />
         <p className="cbButtonText">time</p>
-      </button>
-      <button className="cbButton">
+      </label>
+      <label
+        className={`cbButton ${selectedOption === "words" ? "selected" : ""}`}
+      >
+        <input
+          type="radio"
+          name="option"
+          value="words"
+          checked={selectedOption === "words"}
+          onChange={handleOptionChange}
+          className="cbRadioButton"
+        />
         <FontAwesomeIcon className="cbOptionIcon" icon={faFont} />
         <p className="cbButtonText">words</p>
-      </button>
-      <button className="cbButton">
+      </label>
+      <label
+        className={`cbButton ${selectedOption === "zen" ? "selected" : ""}`}
+      >
+        <input
+          type="radio"
+          name="option"
+          value="zen"
+          checked={selectedOption === "zen"}
+          onChange={handleOptionChange}
+          className="cbRadioButton"
+        />
         <FontAwesomeIcon className="cbOptionIcon" icon={faQuoteLeft} />
         <p className="cbButtonText">zen</p>
-      </button>
+      </label>
       <div className="cbDivider"></div>
-      <button className="cbButton">
+      <label
+        className={`cbButton ${selectedNumber === "15" ? "selected" : ""}`}
+      >
+        <input
+          type="radio"
+          name="number"
+          value="15"
+          checked={selectedNumber === "15"}
+          onChange={handleNumberChange}
+          className="cbRadioButton"
+        />
         <p className="cbButtonText">15</p>
-      </button>
-      <button className="cbButton">
+      </label>
+      <label
+        className={`cbButton ${selectedNumber === "30" ? "selected" : ""}`}
+      >
+        <input
+          type="radio"
+          name="number"
+          value="30"
+          checked={selectedNumber === "30"}
+          onChange={handleNumberChange}
+          className="cbRadioButton"
+        />
         <p className="cbButtonText">30</p>
-      </button>
-      <button className="cbButton">
+      </label>
+      <label
+        className={`cbButton ${selectedNumber === "45" ? "selected" : ""}`}
+      >
+        <input
+          type="radio"
+          name="number"
+          value="45"
+          checked={selectedNumber === "45"}
+          onChange={handleNumberChange}
+          className="cbRadioButton"
+        />
         <p className="cbButtonText">45</p>
-      </button>
+      </label>
     </div>
   );
-}
+};
 
 export default ControlBar;

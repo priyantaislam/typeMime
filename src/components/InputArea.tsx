@@ -21,7 +21,7 @@ function InputArea() {
   const part1 = text.slice(0, splitIndex);
   const part2 = text.slice(splitIndex);
 
-  const shouldRed = (index: number) => {
+  const spellCheck = (index: number) => {
     return inputValue[index] === part1[index];
   };
 
@@ -32,7 +32,7 @@ function InputArea() {
           {part1.split("").map((char, index) => (
             <span
               key={index}
-              style={{ color: shouldRed(index) ? "#c5c6c1" : "#c52e42" }}
+              style={{ color: spellCheck(index) ? "#c5c6c1" : "#c52e42" }}
             >
               {char}
             </span>

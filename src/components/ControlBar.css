@@ -8,7 +8,7 @@
 }
 .cbButton {
   background-color: transparent;
-  border: none; /* Remove the border */
+  border: none;
   cursor: pointer;
   transition: transform 0.3s;
   align-items: center;
@@ -16,6 +16,10 @@
   float: left;
   display: flex;
   margin-right: 8px;
+}
+
+.cbRadioButton {
+  display: none; /* Hide the radio button */
 }
 
 .cbOptionIcon {
@@ -33,12 +37,14 @@
   float: left;
 }
 
-.cbButton:hover .cbOptionIcon {
-  color: #bca441; /* Change the icon color on hover */
+.cbButton:hover .cbOptionIcon,
+.cbButton.selected .cbOptionIcon {
+  color: #bca441; /* Change the icon color on hover or when selected */
 }
 
-.cbButton:hover .cbButtonText {
-  color: #bca441; /* Change the icon color on hover */
+.cbButton:hover .cbButtonText,
+.cbButton.selected .cbButtonText {
+  color: #bca441; /* Change the text color on hover or when selected */
 }
 
 .cbDivider {
