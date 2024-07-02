@@ -1,20 +1,20 @@
 import "./InputArea.css";
 import React, { useState, ChangeEvent, useRef, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBullseye } from "@fortawesome/free-solid-svg-icons";
+import CenterFocusStrongIcon from "@mui/icons-material/CenterFocusStrong";
 
 function InputArea() {
   const [isInputFocused, setIsInputFocused] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleFocus = () => {
-    console.log("am I ever here");
     setIsInputFocused(true);
   };
 
   const handleBlur = () => {
     setIsInputFocused(false);
-  };
-
-  const divStyle = {
-    filter: isInputFocused ? "none" : "blur(5px)",
+    console.log("BLUR");
   };
 
   const [inputValue, setInputValue] = useState<string>("");
@@ -26,10 +26,14 @@ function InputArea() {
     const value = e.target.value;
     setInputValue(value);
 
-    console.log(value);
+    //console.log(value);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   // Split text based on input length
   const splitIndex = inputValue.length;
@@ -50,32 +54,38 @@ function InputArea() {
   };
 
   return (
-    <div className="inputArea">
-      <div
-        className={`text-container ${
-          isInputFocused ? "no-blur" : "blur-effect"
-        }`}
-      >
-        <span>
-          {part1.split("").map((char, index) => (
-            <span
-              key={index}
-              style={{ color: spellCheck(index) ? "#c5c6c1" : "#c52e42" }}
-            >
-              {char}
-            </span>
-          ))}
-        </span>
-        <span className="blinking-cursor"></span>
-        <span>{part2}</span>
+    <div>
+      {!isInputFocused && (
+        <div className="focus-container">
+          <CenterFocusStrongIcon className="focus-icon" />
+          <div className="focus-label">focus to start typing</div>
+        </div>
+      )}
+
+      <div className="inputArea">
+        <div className={`text-container ${isInputFocused ? "" : "blurred"}`}>
+          <span>
+            {part1.split("").map((char, index) => (
+              <span
+                key={index}
+                style={{ color: spellCheck(index) ? "#c5c6c1" : "#c52e42" }}
+              >
+                {char}
+              </span>
+            ))}
+          </span>
+          <span>{part2}</span>
+        </div>
+        <input
+          type="text"
+          ref={inputRef}
+          className="invisible-input"
+          value={inputValue}
+          onChange={handleChange}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        />
       </div>
-      <input
-        type="text"
-        className="invisible-input"
-        value={inputValue}
-        onChange={handleChange}
-        onFocus={handleFocus}
-      />
     </div>
   );
 }

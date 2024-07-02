@@ -5,14 +5,19 @@ import {
   faKeyboard,
   faCog,
   faInfoCircle,
+  faPencilAlt,
+  faMask,
+  faPen,
+  faAlignLeft,
+  faFont,
 } from "@fortawesome/free-solid-svg-icons";
 
 function NavBar() {
   return (
     <div className="nv">
       <div className="logo">
-        <FontAwesomeIcon className="terminalIcon" icon={faTerminal} />
-        <h1 className="nvTitle">TypeDash</h1>
+        <FontAwesomeIcon className="terminalIcon" icon={faMask} />
+        <h1 className="nvTitle">TypeMime</h1>
       </div>
       <button className="nvButton">
         <FontAwesomeIcon className="nvOptionIcon" icon={faKeyboard} />

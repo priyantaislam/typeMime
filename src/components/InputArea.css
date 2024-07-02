@@ -1,6 +1,6 @@
 .inputArea {
   position: relative;
-  margin-top: 5vh;
+  margin-top: 7.5vh;
 }
 
 .blur-effect {
@@ -11,18 +11,27 @@
   filter: none;
 }
 
+.focus-text {
+  height: 5vh;
+  width: auto;
+}
 .text-container {
   font-family: "Roboto Mono", monospace;
   color: #93959477;
-  font-size: 44px;
+  font-size: 32px;
   line-clamp: 3;
   padding-left: 10vw;
   padding-right: 10vw;
-  padding-top: 10vh;
+  padding-top: 5vh;
   padding-bottom: 20vh;
   text-align: justify;
   text-align-last: start;
   overflow: hidden;
+  transition: filter 0.3s ease;
+}
+
+.text-container.blurred {
+  filter: blur(5px);
 }
 
 .invisible-input {
@@ -52,4 +61,25 @@
   50% {
     border-color: #bca441;
   }
+}
+
+.focus-container {
+  font-family: "Roboto Mono", monospace;
+  font-size: 18px;
+  position: absolute;
+  top: 25vh;
+  left: 0;
+  right: 0;
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  color: #93959477;
+}
+
+.focus-container.hidden {
+  opacity: 0;
 }
