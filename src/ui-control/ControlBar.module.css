@@ -1,4 +1,6 @@
-.cb {
+/* styles.module.css */
+
+.container {
   margin-top: 2vh;
   background-color: #28282e;
   border-radius: 10px;
@@ -9,7 +11,7 @@
   padding-right: 16px;
 }
 
-.cbButton {
+.button {
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -22,11 +24,11 @@
   margin-left: 4px;
 }
 
-.cbRadioButton {
+.radioButton {
   display: none; /* Hide the radio button */
 }
 
-.cbOptionIcon {
+.icon {
   margin-left: 0.5vw;
   font-size: 16px;
   color: #93959477;
@@ -34,7 +36,7 @@
   transition: color 0.3s;
 }
 
-.cbButtonText {
+.buttonText {
   font-family: "Roboto Mono", monospace;
   color: #93959477;
   font-size: 16px;
@@ -43,17 +45,17 @@
   transition: color 0.3s;
 }
 
-.cbButton:hover .cbOptionIcon,
-.cbButton:hover .cbButtonText {
+.button:hover .icon,
+.button:hover .buttonText {
   color: #c5c6c1;
 }
 
-.cbButton.selected .cbOptionIcon,
-.cbButton.selected .cbButtonText {
+.button.selected .icon,
+.button.selected .buttonText {
   color: #bca441;
 }
 
-.cbDivider {
+.divider {
   height: 30px;
   width: 4px;
   background-color: #4242422f;

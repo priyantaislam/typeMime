@@ -1,4 +1,5 @@
-import "./ControlBar.css";
+import React, { useState } from "react";
+import styles from "./ControlBar.module.css"; // Import CSS Modules styles
 import {
   faClock,
   faFont,
@@ -7,7 +8,6 @@ import {
   faAt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
 
 const ControlBar: React.FC = () => {
   // Set default selected options
@@ -33,24 +33,26 @@ const ControlBar: React.FC = () => {
   };
 
   return (
-    <div className="cb">
+    <div className={styles.container}>
       <button
-        className={`cbButton ${isPunctuationOn ? "selected" : ""}`}
+        className={`${styles.button} ${isPunctuationOn ? styles.selected : ""}`}
         onClick={handlePunctuationClick}
       >
-        <FontAwesomeIcon className="cbOptionIcon" icon={faAt} />
-        <p className="cbButtonText">punctuation</p>
+        <FontAwesomeIcon className={styles.icon} icon={faAt} />
+        <p className={styles.buttonText}>punctuation</p>
       </button>
       <button
-        className={`cbButton ${isNumberOn ? "selected" : ""}`}
+        className={`${styles.button} ${isNumberOn ? styles.selected : ""}`}
         onClick={handleNumberClick}
       >
-        <FontAwesomeIcon className="cbOptionIcon" icon={faHashtag} />
-        <p className="cbButtonText">numbers</p>
+        <FontAwesomeIcon className={styles.icon} icon={faHashtag} />
+        <p className={styles.buttonText}>numbers</p>
       </button>
-      <div className="cbDivider"></div>
+      <div className={styles.divider}></div>
       <label
-        className={`cbButton ${selectedOption === "time" ? "selected" : ""}`}
+        className={`${styles.button} ${
+          selectedOption === "time" ? styles.selected : ""
+        }`}
       >
         <input
           type="radio"
@@ -58,13 +60,15 @@ const ControlBar: React.FC = () => {
           value="time"
           checked={selectedOption === "time"}
           onChange={handleOptionChange}
-          className="cbRadioButton"
+          className={styles.radioButton}
         />
-        <FontAwesomeIcon className="cbOptionIcon" icon={faClock} />
-        <p className="cbButtonText">time</p>
+        <FontAwesomeIcon className={styles.icon} icon={faClock} />
+        <p className={styles.buttonText}>time</p>
       </label>
       <label
-        className={`cbButton ${selectedOption === "words" ? "selected" : ""}`}
+        className={`${styles.button} ${
+          selectedOption === "words" ? styles.selected : ""
+        }`}
       >
         <input
           type="radio"
@@ -72,13 +76,15 @@ const ControlBar: React.FC = () => {
           value="words"
           checked={selectedOption === "words"}
           onChange={handleOptionChange}
-          className="cbRadioButton"
+          className={styles.radioButton}
         />
-        <FontAwesomeIcon className="cbOptionIcon" icon={faFont} />
-        <p className="cbButtonText">words</p>
+        <FontAwesomeIcon className={styles.icon} icon={faFont} />
+        <p className={styles.buttonText}>words</p>
       </label>
       <label
-        className={`cbButton ${selectedOption === "zen" ? "selected" : ""}`}
+        className={`${styles.button} ${
+          selectedOption === "zen" ? styles.selected : ""
+        }`}
       >
         <input
           type="radio"
@@ -86,14 +92,16 @@ const ControlBar: React.FC = () => {
           value="zen"
           checked={selectedOption === "zen"}
           onChange={handleOptionChange}
-          className="cbRadioButton"
+          className={styles.radioButton}
         />
-        <FontAwesomeIcon className="cbOptionIcon" icon={faQuoteLeft} />
-        <p className="cbButtonText">quote</p>
+        <FontAwesomeIcon className={styles.icon} icon={faQuoteLeft} />
+        <p className={styles.buttonText}>quote</p>
       </label>
-      <div className="cbDivider"></div>
+      <div className={styles.divider}></div>
       <label
-        className={`cbButton ${selectedNumber === "15" ? "selected" : ""}`}
+        className={`${styles.button} ${
+          selectedNumber === "15" ? styles.selected : ""
+        }`}
       >
         <input
           type="radio"
@@ -101,12 +109,14 @@ const ControlBar: React.FC = () => {
           value="15"
           checked={selectedNumber === "15"}
           onChange={handleNumberChange}
-          className="cbRadioButton"
+          className={styles.radioButton}
         />
-        <p className="cbButtonText">15</p>
+        <p className={styles.buttonText}>15</p>
       </label>
       <label
-        className={`cbButton ${selectedNumber === "30" ? "selected" : ""}`}
+        className={`${styles.button} ${
+          selectedNumber === "30" ? styles.selected : ""
+        }`}
       >
         <input
           type="radio"
@@ -114,12 +124,14 @@ const ControlBar: React.FC = () => {
           value="30"
           checked={selectedNumber === "30"}
           onChange={handleNumberChange}
-          className="cbRadioButton"
+          className={styles.radioButton}
         />
-        <p className="cbButtonText">30</p>
+        <p className={styles.buttonText}>30</p>
       </label>
       <label
-        className={`cbButton ${selectedNumber === "45" ? "selected" : ""}`}
+        className={`${styles.button} ${
+          selectedNumber === "45" ? styles.selected : ""
+        }`}
       >
         <input
           type="radio"
@@ -127,9 +139,9 @@ const ControlBar: React.FC = () => {
           value="45"
           checked={selectedNumber === "45"}
           onChange={handleNumberChange}
-          className="cbRadioButton"
+          className={styles.radioButton}
         />
-        <p className="cbButtonText">45</p>
+        <p className={styles.buttonText}>45</p>
       </label>
     </div>
   );

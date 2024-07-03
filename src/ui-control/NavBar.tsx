@@ -1,35 +1,32 @@
-import "./NavBar.css";
+import React from "react";
+import styles from "./NavBar.module.css"; // Import CSS Modules styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTerminal,
   faKeyboard,
   faCog,
   faInfoCircle,
-  faPencilAlt,
   faMask,
-  faPen,
-  faAlignLeft,
-  faFont,
 } from "@fortawesome/free-solid-svg-icons";
 
-function NavBar() {
+const NavBar: React.FC = () => {
   return (
-    <div className="nv">
-      <div className="logo">
-        <FontAwesomeIcon className="terminalIcon" icon={faMask} />
-        <h1 className="nvTitle">TypeMime</h1>
+    <div className={styles.bar}>
+      <div className={styles.logo}>
+        <FontAwesomeIcon className={styles.icon} icon={faMask} />
+        <h1 className={styles.title}>TypeMime</h1>
       </div>
-      <button className="nvButton">
-        <FontAwesomeIcon className="nvOptionIcon" icon={faKeyboard} />
+      <button className={styles.button}>
+        <FontAwesomeIcon className={styles.optionIcon} icon={faKeyboard} />
       </button>
-      <button className="nvButton">
-        <FontAwesomeIcon className="nvOptionIcon" icon={faCog} />
+      <button className={styles.button}>
+        <FontAwesomeIcon className={styles.optionIcon} icon={faCog} />
       </button>
-      <button className="nvButton">
-        <FontAwesomeIcon className="nvOptionIcon" icon={faInfoCircle} />
+      <button className={styles.button}>
+        <FontAwesomeIcon className={styles.optionIcon} icon={faInfoCircle} />
       </button>
     </div>
   );
-}
+};
 
 export default NavBar;

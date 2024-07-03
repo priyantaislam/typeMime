@@ -1,6 +1,5 @@
-// InputArea.tsx
 import React, { useState, ChangeEvent, useRef, useEffect } from "react";
-import "./InputArea.css"; // Ensure you import the CSS file
+import styles from "./InputArea.module.css"; // Import CSS Modules styles
 import TimerModal from "../components/Modal";
 import TextDisplay from "./TextDisplay";
 import FocusInstructions from "./FocusInstruction";
@@ -54,9 +53,9 @@ const InputArea: React.FC = () => {
   return (
     <div>
       {!isInputFocused && !isModalOpen && <FocusInstructions />}
-      {timer !== null && <div className="timer-container">{timer}</div>}
+      {timer !== null && <div className={styles.timerContainer}>{timer}</div>}
 
-      <div className="inputArea">
+      <div className={styles.inputArea}>
         <TextDisplay
           inputValue={inputValue}
           text={text}
@@ -65,7 +64,7 @@ const InputArea: React.FC = () => {
         <input
           type="text"
           ref={inputRef}
-          className="invisible-input"
+          className={styles.invisibleInput}
           value={inputValue}
           onChange={handleChange}
           onFocus={handleFocus}

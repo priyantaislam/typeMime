@@ -1,12 +1,11 @@
-// FocusInstructions.tsx
 import React from "react";
 import CenterFocusStrongIcon from "@mui/icons-material/CenterFocusStrong";
-import "./FocusInstructions.css"; // Ensure you import the CSS file
+import styles from "./FocusInstructions.module.css"; // Import CSS Modules styles
 
 const FocusInstructions: React.FC = () => (
-  <div className="focus-instructions">
-    <CenterFocusStrongIcon className="focus-icon" />
-    <div className="focus-label">focus to start typing</div>
+  <div className={`${styles.focusInstructions}`}>
+    <CenterFocusStrongIcon className={styles.focusIcon} />
+    <div className={styles.focusLabel}>focus to start typing</div>
   </div>
 );
 

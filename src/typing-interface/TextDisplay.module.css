@@ -1,4 +1,4 @@
-.text-display {
+.textDisplay {
   font-family: "Roboto Mono", monospace;
   color: #93959477;
   font-size: 32px;
@@ -13,27 +13,27 @@
   transition: filter 0.3s ease;
 }
 
-.text-display.blurred {
+.blurred {
   filter: blur(5px);
 }
 
-.text-display span {
+.textDisplay span {
   display: inline;
 }
 
-.text-display .correct-char {
+.correctChar {
   color: #c5c6c1;
   text-decoration: none;
 }
 
-.text-display .incorrect-char {
+.incorrectChar {
   color: #c52e42;
   text-decoration: underline;
   text-underline-offset: 8px;
 }
 
 @media only screen and (max-width: 600px) {
-  .text-display {
+  .textDisplay {
     font-size: 24px;
   }
 }

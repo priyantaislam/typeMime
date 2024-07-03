@@ -1,6 +1,6 @@
 // TextDisplay.tsx
 import React from "react";
-import "./TextDisplay.css"; // Ensure you import the CSS file
+import styles from "./TextDisplay.module.css"; // Import CSS Modules styles
 
 interface TextDisplayProps {
   inputValue: string;
@@ -19,12 +19,14 @@ const TextDisplay: React.FC<TextDisplayProps> = ({
   const spellCheck = (index: number) => inputValue[index] === part1[index];
 
   return (
-    <div className={`text-display ${blur ? "blurred" : ""}`}>
+    <div className={`${styles.textDisplay} ${blur ? styles.blurred : ""}`}>
       <span>
         {part1.split("").map((char, index) => (
           <span
             key={index}
-            className={spellCheck(index) ? "correct-char" : "incorrect-char"}
+            className={
+              spellCheck(index) ? styles.correctChar : styles.incorrectChar
+            }
           >
             {char}
           </span>

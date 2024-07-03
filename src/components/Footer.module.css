@@ -1,3 +1,4 @@
+/* Footer.module.css */
 .footer {
   padding: 20px;
   padding-bottom: 5vh;
@@ -9,13 +10,13 @@
   padding-left: 10vw;
 }
 
-.footer-icons {
+.footerIcons {
   display: flex;
   justify-content: flex-start;
   gap: 2vw;
 }
 
-.footer-icons a {
+.footerIcons a {
   font-size: 16px;
   color: #93959477;
   text-decoration: none;
@@ -23,17 +24,17 @@
   align-items: center;
 }
 
-.footer-icons a:hover {
+.footerIcons a:hover {
   color: #c5c6c1;
 }
 
-.source-code-icon {
+.sourceCodeIcon {
   font-size: 28px;
   color: #93959477;
   margin-top: 0.2vh;
   transition: color 0.3s ease;
 }
 
-.source-code-icon:hover {
+.sourceCodeIcon:hover {
   color: #c5c6c1;
 }
