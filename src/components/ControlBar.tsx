@@ -3,25 +3,52 @@ import {
   faClock,
   faFont,
   faQuoteLeft,
+  faHashtag,
+  faAt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState, ChangeEvent } from "react";
+import React, { useState } from "react";
 
 const ControlBar: React.FC = () => {
   // Set default selected options
   const [selectedOption, setSelectedOption] = useState<string>("time");
   const [selectedNumber, setSelectedNumber] = useState<string>("15");
+  const [isNumberOn, setNumberOn] = useState(false);
+  const [isPunctuationOn, setIsPunctuationOn] = useState(false);
 
-  const handleOptionChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleNumberClick = () => {
+    setNumberOn(!isNumberOn);
+  };
+
+  const handlePunctuationClick = () => {
+    setIsPunctuationOn(!isPunctuationOn);
+  };
+
+  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
   };
 
-  const handleNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedNumber(event.target.value);
   };
 
   return (
     <div className="cb">
+      <button
+        className={`cbButton ${isPunctuationOn ? "selected" : ""}`}
+        onClick={handlePunctuationClick}
+      >
+        <FontAwesomeIcon className="cbOptionIcon" icon={faAt} />
+        <p className="cbButtonText">punctuation</p>
+      </button>
+      <button
+        className={`cbButton ${isNumberOn ? "selected" : ""}`}
+        onClick={handleNumberClick}
+      >
+        <FontAwesomeIcon className="cbOptionIcon" icon={faHashtag} />
+        <p className="cbButtonText">numbers</p>
+      </button>
+      <div className="cbDivider"></div>
       <label
         className={`cbButton ${selectedOption === "time" ? "selected" : ""}`}
       >
@@ -62,7 +89,7 @@ const ControlBar: React.FC = () => {
           className="cbRadioButton"
         />
         <FontAwesomeIcon className="cbOptionIcon" icon={faQuoteLeft} />
-        <p className="cbButtonText">zen</p>
+        <p className="cbButtonText">quote</p>
       </label>
       <div className="cbDivider"></div>
       <label
