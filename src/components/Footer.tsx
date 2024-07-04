@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faCode } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Footer.module.css"; // Import CSS Modules styles
+import { useTheme } from "../context/ThemeContext";
 
 const Footer: React.FC = () => {
+  const { currentTheme } = useTheme();
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} ${currentTheme}`}>
       <div className={styles.footerIcons}>
         <a
           href="https://github.com/priyantaislam"

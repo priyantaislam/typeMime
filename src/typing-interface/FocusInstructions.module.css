@@ -12,7 +12,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color: #93959477;
+  color: var(--secondary-color-2);
 }
 
 .hidden {
@@ -26,9 +26,9 @@
 }
 
 .focusIcon {
-  color: #93959477;
+  color: var(--secondary-color-2);
 }
 
 .focusLabel {
-  color: #93959477;
+  color: var(--secondary-color-2);
 }

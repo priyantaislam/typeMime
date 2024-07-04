@@ -18,23 +18,23 @@
 
 .footerIcons a {
   font-size: 16px;
-  color: #93959477;
+  color: var(--secondary-color-2);
   text-decoration: none;
   display: flex;
   align-items: center;
 }
 
 .footerIcons a:hover {
-  color: #c5c6c1;
+  color: var(--secondary-color-1);
 }
 
 .sourceCodeIcon {
   font-size: 28px;
-  color: #93959477;
+  color: var(--secondary-color-2);
   margin-top: 0.2vh;
   transition: color 0.3s ease;
 }
 
 .sourceCodeIcon:hover {
-  color: #c5c6c1;
+  color: var(--secondary-color-1);
 }

@@ -4,12 +4,14 @@ import TimerModal from "../components/Modal";
 import TextDisplay from "./TextDisplay";
 import FocusInstructions from "./FocusInstruction";
 import { useTimer } from "../hooks/useTimer";
+import { useTheme } from "../context/ThemeContext";
 
 const InputArea: React.FC = () => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [inputValue, setInputValue] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { currentTheme } = useTheme();
 
   const text =
     "apple under bicycle they dream beside funny his kitchen it river on sunshine her book chair garden between music laptop she window their ocean apple under bicycle they dream beside beside funny his kitchen";
@@ -51,7 +53,7 @@ const InputArea: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={currentTheme}>
       {!isInputFocused && !isModalOpen && <FocusInstructions />}
       {timer !== null && <div className={styles.timerContainer}>{timer}</div>}
 

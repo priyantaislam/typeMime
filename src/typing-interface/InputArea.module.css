@@ -29,7 +29,7 @@
   top: 20vh; /* Adjust to position just above text-container */
   left: 10vw; /* Adjust left margin as needed */
   font-family: "Roboto Mono", monospace;
-  color: #bca441;
+  color: var(--accent-color-1);
   font-size: 48px;
   text-align: left;
 }

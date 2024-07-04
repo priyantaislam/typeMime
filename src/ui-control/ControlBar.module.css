@@ -2,13 +2,14 @@
 
 .container {
   margin-top: 2vh;
-  background-color: #28282e;
+  background-color: var(--primary-color-2);
   border-radius: 10px;
   display: inline-block;
   align-items: center;
   justify-content: center;
   padding-left: 12px;
   padding-right: 16px;
+  margin-left: 32vw;
 }
 
 .button {
@@ -31,14 +32,14 @@
 .icon {
   margin-left: 0.5vw;
   font-size: 16px;
-  color: #93959477;
+  color: var(--secondary-color-2);
   float: left;
   transition: color 0.3s;
 }
 
 .buttonText {
   font-family: "Roboto Mono", monospace;
-  color: #93959477;
+  color: var(--secondary-color-2);
   font-size: 16px;
   margin-left: 8px;
   float: left;
@@ -47,18 +48,18 @@
 
 .button:hover .icon,
 .button:hover .buttonText {
-  color: #c5c6c1;
+  color: var(--secondary-color-1);
 }
 
 .button.selected .icon,
 .button.selected .buttonText {
-  color: #bca441;
+  color: var(--accent-color-1);
 }
 
 .divider {
   height: 30px;
   width: 4px;
-  background-color: #4242422f;
+  background-color: var(--accent-color-2);
   margin-left: 10px;
   margin-right: 10px;
   margin-top: 1.3vh;

@@ -1,0 +1,35 @@
+/* styles/themes.css */
+:root {
+  --primary-color-1: #34343b;
+  --primary-color-2: #242429;
+  --secondary-color-1: #c5c6c1;
+  --secondary-color-2: #93959477;
+  --accent-color-1: #bca441;
+  --accent-color-2: #4242422f;
+  --error-color: #c52e42;
+}
+
+/* Light Theme */
+.light-theme {
+  --primary-color-1: #c38370;
+  --primary-color-2: #a45c40;
+  --secondary-color-1: #f6eee0;
+  --secondary-color-2: #e4b7a0;
+  /* Generating accent colors */
+  --accent-color-1: #ffd700; /* Default blue accent */
+  --accent-color-2: #f08080; /* Green accent */
+
+  /* Error color */
+  --error-color: #dc3545;
+}
+
+/* Dark Theme */
+.dark-theme {
+  --primary-color-1: #1c1d1c;
+  --primary-color-2: #202220;
+  --secondary-color-1: #7ca225;
+  --secondary-color-2: #848484;
+  --accent-color-1: #7ca225;
+  --accent-color-2: #4242422f;
+  --error-color: #bb2cce;
+}

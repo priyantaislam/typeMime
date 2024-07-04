@@ -2,6 +2,7 @@
 import React from "react";
 import Modal from "react-modal";
 import styles from "./Modal.module.css"; // Import CSS Modules styles
+import { useTheme } from "../context/ThemeContext";
 
 interface TimerModalProps {
   isOpen: boolean;
@@ -14,13 +15,14 @@ const TimerModal: React.FC<TimerModalProps> = ({
   onRequestClose,
   inputValue,
 }) => {
+  const { currentTheme } = useTheme();
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Timer Ended"
-      className={styles.modalOverlay}
-      overlayClassName={styles.modalOverlay}
+      className={`${styles.modalOverlay} ${currentTheme}`}
+      overlayClassName={`${styles.modalOverlay} ${currentTheme}`}
     >
       <div className={styles.modalContent}>
         <h3 className={styles.modalHeading}>wpm</h3>

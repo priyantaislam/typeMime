@@ -1,6 +1,6 @@
 .textDisplay {
   font-family: "Roboto Mono", monospace;
-  color: #93959477;
+  color: var(--secondary-color-2);
   font-size: 32px;
   line-clamp: 3;
   padding-left: 10vw;
@@ -22,12 +22,12 @@
 }
 
 .correctChar {
-  color: #c5c6c1;
+  color: var(--secondary-color-1);
   text-decoration: none;
 }
 
 .incorrectChar {
-  color: #c52e42;
+  color: var(--error-color);
   text-decoration: underline;
   text-underline-offset: 8px;
 }

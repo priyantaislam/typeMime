@@ -8,9 +8,11 @@ import {
   faAt,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTheme } from "../context/ThemeContext";
 
 const ControlBar: React.FC = () => {
   // Set default selected options
+  const { currentTheme } = useTheme();
   const [selectedOption, setSelectedOption] = useState<string>("time");
   const [selectedNumber, setSelectedNumber] = useState<string>("15");
   const [isNumberOn, setNumberOn] = useState(false);
@@ -33,7 +35,7 @@ const ControlBar: React.FC = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${currentTheme}`}>
       <button
         className={`${styles.button} ${isPunctuationOn ? styles.selected : ""}`}
         onClick={handlePunctuationClick}

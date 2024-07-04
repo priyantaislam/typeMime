@@ -8,10 +8,19 @@ import {
   faInfoCircle,
   faMask,
 } from "@fortawesome/free-solid-svg-icons";
+import { useTheme } from "../context/ThemeContext";
+import DropdownMenu from "../components/Dropdown";
 
 const NavBar: React.FC = () => {
+  const { currentTheme, setTheme } = useTheme();
+  console.log(currentTheme);
+
+  const handleClick = () => {
+    setTheme("light-theme");
+  };
+
   return (
-    <div className={styles.bar}>
+    <div className={`${styles.bar} ${currentTheme}`}>
       <div className={styles.logo}>
         <FontAwesomeIcon className={styles.icon} icon={faMask} />
         <h1 className={styles.title}>TypeMime</h1>
@@ -25,6 +34,7 @@ const NavBar: React.FC = () => {
       <button className={styles.button}>
         <FontAwesomeIcon className={styles.optionIcon} icon={faInfoCircle} />
       </button>
+      <DropdownMenu />
     </div>
   );
 };
