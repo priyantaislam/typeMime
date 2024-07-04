@@ -35,7 +35,8 @@
   transition: background-color 0.3s, color 0.3s; /* Add transition */
   white-space: nowrap; /* Prevent text wrapping */
   overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Show ellipsis if text overflows */
+  text-overflow: ellipsis;
+  color: var(--secondary-color-2); /* Show ellipsis if text overflows */
 }
 
 .dropdownMenu li:hover {

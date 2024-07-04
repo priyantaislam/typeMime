@@ -41,9 +41,9 @@ const DropdownMenu = () => {
       </button>
       {isOpen && (
         <ul className={styles.dropdownMenu}>
-          <li onClick={onClickRoot}>Default</li>
-          <li onClick={onClickLight}>Light</li>
-          <li onClick={onClickDark}>Dark</li>
+          <li onClick={onClickRoot}>default</li>
+          <li onClick={onClickLight}>light</li>
+          <li onClick={onClickDark}>dark</li>
         </ul>
       )}
     </div>

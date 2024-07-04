@@ -80,6 +80,7 @@ const InputArea: React.FC = () => {
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         inputValue={inputValue}
+        text={text}
       />
     </div>
   );

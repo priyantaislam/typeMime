@@ -8,14 +8,28 @@ interface TimerModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
   inputValue: string;
+  text: string;
 }
 
 const TimerModal: React.FC<TimerModalProps> = ({
   isOpen,
   onRequestClose,
   inputValue,
+  text,
 }) => {
   const { currentTheme } = useTheme();
+  const accuracy = (text: string, input: string) => {
+    const length = Math.min(text.length, input.length);
+    let matches = 0;
+
+    for (let i = 0; i < length; i++) {
+      if (text[i] === input[i]) {
+        matches++;
+      }
+    }
+
+    return Math.round((matches / length) * 100);
+  };
   return (
     <Modal
       isOpen={isOpen}
@@ -30,7 +44,7 @@ const TimerModal: React.FC<TimerModalProps> = ({
           {inputValue.trim().split(/\s+/).length * 4}
         </h2>
         <h3 className={styles.modalHeading}>acc</h3>
-        <h2 className={styles.modalStat}>97%</h2>
+        <h2 className={styles.modalStat}>{accuracy(text, inputValue)}%</h2>
         <button className={styles.closeButton} onClick={onRequestClose}>
           X
         </button>
