@@ -37,7 +37,7 @@ const DropdownMenu = () => {
   return (
     <div className={styles.dropdown}>
       <button className={styles.dropdownToggle} onClick={toggleMenu}>
-        <FontAwesomeIcon className={styles.optionIcon} icon={faPaintBrush} />
+        <FontAwesomeIcon className={styles.optionIcon} icon={faCog} />
       </button>
       {isOpen && (
         <ul className={styles.dropdownMenu}>

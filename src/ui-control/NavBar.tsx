@@ -29,9 +29,6 @@ const NavBar: React.FC = () => {
         <FontAwesomeIcon className={styles.optionIcon} icon={faKeyboard} />
       </button>
       <button className={styles.button}>
-        <FontAwesomeIcon className={styles.optionIcon} icon={faCog} />
-      </button>
-      <button className={styles.button}>
         <FontAwesomeIcon className={styles.optionIcon} icon={faInfoCircle} />
       </button>
       <DropdownMenu />

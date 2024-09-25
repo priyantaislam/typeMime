@@ -11,20 +11,32 @@ const InputArea: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [text, setText] = useState<string>("");
   const { currentTheme } = useTheme();
-
-  const text =
-    "apple under bicycle they dream beside funny his kitchen it river on sunshine her book chair garden between music laptop she window their ocean apple under bicycle they dream beside beside funny his kitchen";
 
   const { timer, startTimer, timerStarted } = useTimer(15, () =>
     setIsModalOpen(true)
   );
+
+  const getRandomWords = (wordList: string[], num: number) => {
+    const shuffled = wordList.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num).join(" ");
+  };
 
   useEffect(() => {
     if (inputValue && !timerStarted) {
       startTimer();
     }
   }, [inputValue]);
+
+  useEffect(() => {
+    fetch("/words.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const randomWords = getRandomWords(data.words, 45); // Fetch 45 random words
+        setText(randomWords);
+      });
+  }, []);
 
   useEffect(() => {
     inputRef.current?.focus();

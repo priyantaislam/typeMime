@@ -24,6 +24,7 @@ const ControlBar: React.FC = () => {
 
   const handlePunctuationClick = () => {
     setIsPunctuationOn(!isPunctuationOn);
+    //logic
   };
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {

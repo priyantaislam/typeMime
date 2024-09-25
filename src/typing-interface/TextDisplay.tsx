@@ -1,6 +1,5 @@
-// TextDisplay.tsx
 import React from "react";
-import styles from "./TextDisplay.module.css"; // Import CSS Modules styles
+import styles from "./TextDisplay.module.css";
 
 interface TextDisplayProps {
   inputValue: string;
@@ -23,7 +22,7 @@ const TextDisplay: React.FC<TextDisplayProps> = ({
       <span>
         {part1.split("").map((char, index) => (
           <span
-            key={index}
+            key={`part1_${index}`} // Ensure unique key for part1
             className={
               spellCheck(index) ? styles.correctChar : styles.incorrectChar
             }
@@ -31,8 +30,13 @@ const TextDisplay: React.FC<TextDisplayProps> = ({
             {char}
           </span>
         ))}
+        {part2 && ( // Check if there's any part2 text
+          <span>
+            <span className={styles.cursor}>{part2[0]}</span>
+            {part2.slice(1)}
+          </span>
+        )}
       </span>
-      <span>{part2}</span>
     </div>
   );
 };

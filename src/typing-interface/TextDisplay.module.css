@@ -2,15 +2,13 @@
   font-family: "Roboto Mono", monospace;
   color: var(--secondary-color-2);
   font-size: 32px;
-  line-clamp: 3;
   padding-left: 10vw;
   padding-right: 10vw;
   padding-top: 5vh;
   padding-bottom: 20vh;
   text-align: justify;
   text-align-last: start;
-  overflow: hidden;
-  transition: filter 0.3s ease;
+  overflow: hidden; /* Ensure content doesn't overflow its container */
 }
 
 .blurred {
@@ -35,5 +33,32 @@
 @media only screen and (max-width: 600px) {
   .textDisplay {
     font-size: 24px;
+  }
+}
+
+.cursor {
+  position: relative; /* Ensure positioning context */
+  display: inline-block; /* Ensure inline block for ::after */
+}
+
+.cursor::after {
+  content: ""; /* Required for ::after */
+  position: absolute; /* Position relative to .cursor */
+  bottom: -2px; /* Position at the bottom of .cursor */
+  left: 0; /* Position at the start of .cursor */
+  width: 100%; /* Full width of .cursor */
+  height: 3px; /* Height of underline */
+  background-color: var(--accent-color-1); /* Adjust color as needed */
+  animation: blink-animation 1s infinite;
+}
+
+@keyframes blink-animation {
+  0%,
+  50% {
+    opacity: 0;
+  }
+  51%,
+  100% {
+    opacity: 1;
   }
 }
