@@ -36,29 +36,18 @@
   }
 }
 
-.cursor {
-  position: relative; /* Ensure positioning context */
-  display: inline-block; /* Ensure inline block for ::after */
+.underlinedWord {
+  text-decoration: underline;
+  text-underline-offset: 8px; /* Adjust the offset as needed */
+  text-decoration-color: var(--accent-color-1);
 }
 
-.cursor::after {
-  content: ""; /* Required for ::after */
-  position: absolute; /* Position relative to .cursor */
-  bottom: -2px; /* Position at the bottom of .cursor */
-  left: 0; /* Position at the start of .cursor */
-  width: 100%; /* Full width of .cursor */
-  height: 3px; /* Height of underline */
-  background-color: var(--accent-color-1); /* Adjust color as needed */
-  animation: blink-animation 1s infinite;
-}
-
-@keyframes blink-animation {
+@keyframes blink {
   0%,
-  50% {
-    opacity: 0;
-  }
-  51%,
   100% {
-    opacity: 1;
+    text-decoration-color: transparent; /* Start and end with transparent */
+  }
+  50% {
+    text-decoration-color: #bca441; /* Show color in the middle */
   }
 }

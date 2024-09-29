@@ -17,6 +17,11 @@ const TextDisplay: React.FC<TextDisplayProps> = ({
 
   const spellCheck = (index: number) => inputValue[index] === part1[index];
 
+  // Split part2 into words
+  const part2Words = part2.split(" ");
+  const firstWord = part2Words[0]; // Get the first word
+  const remainingWords = part2Words.slice(1).join(" "); // Join the remaining words
+
   return (
     <div className={`${styles.textDisplay} ${blur ? styles.blurred : ""}`}>
       <span>
@@ -30,12 +35,10 @@ const TextDisplay: React.FC<TextDisplayProps> = ({
             {char}
           </span>
         ))}
-        {part2 && ( // Check if there's any part2 text
-          <span>
-            <span className={styles.cursor}>{part2[0]}</span>
-            {part2.slice(1)}
-          </span>
-        )}
+        {/* Render the first word of part2 with an underline */}
+        <span className={styles.underlinedWord}>{firstWord}</span>
+        {remainingWords && ` ${remainingWords}`}{" "}
+        {/* Render remaining words if they exist */}
       </span>
     </div>
   );
