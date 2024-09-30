@@ -11,6 +11,11 @@ interface TimerModalProps {
   text: string;
 }
 
+interface InfoModalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+}
+
 const TimerModal: React.FC<TimerModalProps> = ({
   isOpen,
   onRequestClose,
@@ -53,4 +58,28 @@ const TimerModal: React.FC<TimerModalProps> = ({
   );
 };
 
-export default TimerModal;
+const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onRequestClose }) => {
+  const { currentTheme } = useTheme();
+  return (
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={onRequestClose}
+      contentLabel="Timer Ended"
+      className={`${styles.modalOverlay} ${currentTheme}`}
+      overlayClassName={`${styles.modalOverlay} ${currentTheme}`}
+    >
+      <div className={styles.modalContent}>
+        <h3 className={styles.infoTextHeader}>About TypeMime</h3>
+        <p className={styles.infoText}>
+          TypeMime is a speed typing app built in React Typescript inspired by
+          MonkeyType. It allows users to test their typing speed and accuracy.
+        </p>
+        <button className={styles.closeButton} onClick={onRequestClose}>
+          X
+        </button>
+      </div>
+    </Modal>
+  );
+};
+
+export { TimerModal, InfoModal };

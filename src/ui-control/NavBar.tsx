@@ -10,13 +10,27 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "../context/ThemeContext";
 import DropdownMenu from "../components/Dropdown";
+import { InfoModal } from "../components/Modal";
+import { useState } from "react";
 
 const NavBar: React.FC = () => {
   const { currentTheme, setTheme } = useTheme();
-  console.log(currentTheme);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleClick = () => {
     setTheme("light-theme");
+  };
+
+  const handleClickRefresh = () => {
+    window.location.reload();
+  };
+
+  const handleClickInfo = () => {
+    setIsModalOpen(true);
   };
 
   return (
@@ -25,13 +39,14 @@ const NavBar: React.FC = () => {
         <FontAwesomeIcon className={styles.icon} icon={faMask} />
         <h1 className={styles.title}>TypeMime</h1>
       </div>
-      <button className={styles.button}>
+      <button className={styles.button} onClick={handleClickRefresh}>
         <FontAwesomeIcon className={styles.optionIcon} icon={faKeyboard} />
       </button>
-      <button className={styles.button}>
+      <DropdownMenu />
+      <button className={styles.button} onClick={handleClickInfo}>
         <FontAwesomeIcon className={styles.optionIcon} icon={faInfoCircle} />
       </button>
-      <DropdownMenu />
+      <InfoModal isOpen={isModalOpen} onRequestClose={closeModal} />
     </div>
   );
 };
