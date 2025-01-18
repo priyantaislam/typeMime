@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Dropdown.module.css"; // Import CSS Module for styling
+import styles from "./Dropdown.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTerminal,

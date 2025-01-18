@@ -1,6 +1,6 @@
 import React from "react";
 import CenterFocusStrongIcon from "@mui/icons-material/CenterFocusStrong";
-import styles from "./FocusInstructions.module.css"; // Import CSS Modules styles
+import styles from "./FocusInstructions.module.css";
 
 const FocusInstructions: React.FC = () => (
   <div className={`${styles.focusInstructions}`}>

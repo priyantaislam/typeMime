@@ -1,7 +1,7 @@
 // TimerModal.tsx
 import React from "react";
 import Modal from "react-modal";
-import styles from "./Modal.module.css"; // Import CSS Modules styles
+import styles from "./Modal.module.css";
 import { useTheme } from "../context/ThemeContext";
 
 interface TimerModalProps {
@@ -9,6 +9,7 @@ interface TimerModalProps {
   onRequestClose: () => void;
   inputValue: string;
   text: string;
+  timerValue: number;
 }
 
 interface InfoModalProps {
@@ -21,6 +22,7 @@ const TimerModal: React.FC<TimerModalProps> = ({
   onRequestClose,
   inputValue,
   text,
+  timerValue,
 }) => {
   const { currentTheme } = useTheme();
   const accuracy = (text: string, input: string) => {
@@ -35,6 +37,9 @@ const TimerModal: React.FC<TimerModalProps> = ({
 
     return Math.round((matches / length) * 100);
   };
+
+  //calculate the wpm here based on timerValue
+
   return (
     <Modal
       isOpen={isOpen}
@@ -46,7 +51,9 @@ const TimerModal: React.FC<TimerModalProps> = ({
       <div className={styles.modalContent}>
         <h3 className={styles.modalHeading}>wpm</h3>
         <h2 className={styles.modalStat}>
-          {inputValue.trim().split(/\s+/).length * 4}
+          {Math.floor(
+            (inputValue.trim().split(/\s+/).length / timerValue) * 60
+          )}
         </h2>
         <h3 className={styles.modalHeading}>acc</h3>
         <h2 className={styles.modalStat}>{accuracy(text, inputValue)}%</h2>

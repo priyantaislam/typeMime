@@ -1,13 +1,13 @@
 .textDisplay {
   font-family: "Roboto Mono", monospace;
   color: var(--secondary-color-2);
-  font-size: 32px;
+  font-size: 4vh;
   padding-left: 10vw;
   padding-right: 10vw;
   padding-top: 5vh;
   padding-bottom: 20vh;
-  text-align: justify;
-  text-align-last: start;
+  line-height: 1.6;
+  text-align: left;
   overflow: hidden; /* Ensure content doesn't overflow its container */
 }
 
@@ -32,13 +32,13 @@
 
 @media only screen and (max-width: 600px) {
   .textDisplay {
-    font-size: 24px;
+    font-size: 2vh;
   }
 }
 
 .underlinedWord {
   text-decoration: underline;
-  text-underline-offset: 8px; /* Adjust the offset as needed */
+  text-underline-offset: 1vh; /* Adjust the offset as needed */
   text-decoration-color: var(--accent-color-1);
 }
 

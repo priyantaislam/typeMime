@@ -27,7 +27,7 @@ const TextDisplay: React.FC<TextDisplayProps> = ({
       <span>
         {part1.split("").map((char, index) => (
           <span
-            key={`part1_${index}`} // Ensure unique key for part1
+            key={`part1_${index}`}
             className={
               spellCheck(index) ? styles.correctChar : styles.incorrectChar
             }

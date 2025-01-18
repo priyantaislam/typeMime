@@ -1,12 +1,17 @@
 import React, { useState, ChangeEvent, useRef, useEffect } from "react";
-import styles from "./InputArea.module.css"; // Import CSS Modules styles
+import styles from "./InputArea.module.css";
 import { TimerModal } from "../components/Modal";
 import TextDisplay from "./TextDisplay";
 import FocusInstructions from "./FocusInstruction";
 import { useTimer } from "../hooks/useTimer";
 import { useTheme } from "../context/ThemeContext";
 
-const InputArea: React.FC = () => {
+interface Props {
+  timerValue: number;
+  isTimerMode: boolean;
+  wordLimit: number;
+}
+const InputArea: React.FC<Props> = ({ timerValue, wordLimit }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [inputValue, setInputValue] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -14,7 +19,7 @@ const InputArea: React.FC = () => {
   const [text, setText] = useState<string>("");
   const { currentTheme } = useTheme();
 
-  const { timer, startTimer, timerStarted } = useTimer(15, () =>
+  const { timer, startTimer, timerStarted } = useTimer(timerValue, () =>
     setIsModalOpen(true)
   );
 
@@ -93,6 +98,7 @@ const InputArea: React.FC = () => {
         onRequestClose={closeModal}
         inputValue={inputValue}
         text={text}
+        timerValue={timerValue}
       />
     </div>
   );

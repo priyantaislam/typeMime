@@ -7,13 +7,13 @@ body,
 
 .AppContainer {
   display: flex; /* Use flexbox to fill height */
-  flex-direction: column; /* Arrange children vertically */
   min-height: 100vh; /* Minimum height of viewport */
   background-color: var(--primary-color-1);
 }
 
 .App {
   text-align: center;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
