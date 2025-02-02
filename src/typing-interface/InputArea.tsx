@@ -11,12 +11,13 @@ interface Props {
   isTimerMode: boolean;
   wordLimit: number;
 }
-const InputArea: React.FC<Props> = ({ timerValue, wordLimit }) => {
+const InputArea: React.FC<Props> = ({ timerValue, wordLimit, isTimerMode }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [inputValue, setInputValue] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [text, setText] = useState<string>("");
+  const [wordCount, setWordCount] = useState<number>(0);
   const { currentTheme } = useTheme();
 
   const { timer, startTimer, timerStarted } = useTimer(timerValue, () =>
@@ -29,8 +30,13 @@ const InputArea: React.FC<Props> = ({ timerValue, wordLimit }) => {
   };
 
   useEffect(() => {
-    if (inputValue && !timerStarted) {
+    if (inputValue && !timerStarted && isTimerMode) {
       startTimer();
+    }
+
+    if (!isTimerMode) {
+      const wordArray = inputValue.trim().split(/\s+/);
+      setWordCount(inputValue.trim() === "" ? 0 : wordArray.length);
     }
   }, [inputValue]);
 
@@ -72,7 +78,14 @@ const InputArea: React.FC<Props> = ({ timerValue, wordLimit }) => {
   return (
     <div className={currentTheme}>
       {!isInputFocused && !isModalOpen && <FocusInstructions />}
-      {timer !== null && <div className={styles.timerContainer}>{timer}</div>}
+      {timer !== null && isTimerMode && (
+        <div className={styles.timerContainer}>{timer}</div>
+      )}
+      {!isTimerMode && inputValue !== "" && (
+        <div className={styles.timerContainer}>
+          {wordCount}/{wordLimit}
+        </div>
+      )}
 
       <div className={styles.inputArea}>
         <TextDisplay

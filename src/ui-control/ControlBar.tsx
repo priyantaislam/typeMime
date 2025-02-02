@@ -26,7 +26,7 @@ const ControlBar: React.FC<Props> = ({
   // Set default selected options
   const { currentTheme } = useTheme();
   const [selectedOption, setSelectedOption] = useState<string>("time");
-  const [selectedNumber, setSelectedNumber] = useState<string>("");
+  const [selectedNumber, setSelectedNumber] = useState<string>("1");
   const [isNumberOn, setNumberOn] = useState(false);
   const [isPunctuationOn, setIsPunctuationOn] = useState(false);
 
@@ -103,7 +103,6 @@ const ControlBar: React.FC<Props> = ({
             type="radio"
             name="number"
             value="1"
-            defaultChecked
             checked={selectedNumber === "1"}
             onChange={handleNumberChange}
             className={styles.radioButton}
