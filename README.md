@@ -1,24 +1,56 @@
-# MonkeyType Clone
+# 🎯Typemime
 
-A typing practice platform inspired by MonkeyType, built with React and TypeScript.
+Typemime is a clone of MonkeyType built using React and TypeScript. 🚀 I wanted to build a typing test website in React that emulated the look and feel of MonkeyType. ⌨️
 
-## Features
+### ✨ Features
 
-- Practice typing with different prompts.
-- Customize settings like time limits and word prompts.
-- Receive typing performance feedback with WPM and accuracy statistics.
+- 🔀 Randomized word generation
 
-## Usage
+- 🎨 Customizable themes (light/dark mode)
 
-- Start typing in the input area to begin practice sessions.
-- View performance statistics in a modal after each session.
+- 📊 Real-time accuracy and speed tracking
 
-## Getting Started
+- 🎯 Dynamic text styling for correct/incorrect input
 
-1. Clone the repository and install dependencies.
-2. Run the development server with `npm start`.
-3. Open `http://localhost:3000` in your browser to view the app.
+- ⚙️ Configurable test settings (word count, time mode)
 
-## Contributing
+### 🛠 Tech Stack
 
-Contributions are welcome! Fork the repository, create a new branch, and submit a pull request.
+Frontend: ⚛️ React, 🟦 TypeScript
+
+Styling: 🎨 CSS Modules
+
+
+
+### 📥 Installation
+
+Clone the repository and install dependencies:
+
+```sh
+git clone https://github.com/priyantaislam/typemime.git
+cd typemime
+npm install
+```
+
+### 🚀 Usage
+
+Start the development server:
+
+```sh
+npm start
+```
+
+Then, open http://localhost:3000 in your browser. 🌐
+
+### 🔮 Future Features
+
+- 🔐 Backend implementation with user authentication
+
+- 👤 Login and user profile system
+
+- 🏆 Leaderboards to compare typing scores globally
+
+- 📅 Typing history and progress tracking
+
+- 🎵 Sound effects for typing feedback
+
