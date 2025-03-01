@@ -3,12 +3,24 @@ body,
 #root {
   height: 100%; /* Ensure the root element takes up full viewport height */
   margin: 0; /* Remove default margin */
+  background-color: var(--primary-color-1);
 }
 
+@keyframes blurIn {
+  from {
+    opacity: 0.95;
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
 .AppContainer {
-  display: flex; /* Use flexbox to fill height */
-  min-height: 100vh; /* Minimum height of viewport */
+  display: flex;
+  min-height: 100vh;
   background-color: var(--primary-color-1);
+  animation: blurIn 0.8s ease-in-out;
 }
 
 .App {

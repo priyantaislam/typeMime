@@ -8,20 +8,21 @@ import { useTheme } from "../context/ThemeContext";
 
 interface Props {
   timerValue: number;
-  isTimerMode: boolean;
-  wordLimit: number;
+  setDisableControlBar: React.Dispatch<React.SetStateAction<boolean>>;
 }
-const InputArea: React.FC<Props> = ({ timerValue, wordLimit, isTimerMode }) => {
+
+const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [inputValue, setInputValue] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [text, setText] = useState<string>("");
-  const [wordCount, setWordCount] = useState<number>(0);
   const { currentTheme } = useTheme();
 
-  const { timer, startTimer, timerStarted } = useTimer(timerValue, () =>
-    setIsModalOpen(true)
+  const { timer, startTimer, timerStarted } = useTimer(
+    timerValue,
+    () => setIsModalOpen(true),
+    setDisableControlBar
   );
 
   const getRandomWords = (wordList: string[], num: number) => {
@@ -30,13 +31,8 @@ const InputArea: React.FC<Props> = ({ timerValue, wordLimit, isTimerMode }) => {
   };
 
   useEffect(() => {
-    if (inputValue && !timerStarted && isTimerMode) {
+    if (inputValue && !timerStarted) {
       startTimer();
-    }
-
-    if (!isTimerMode) {
-      const wordArray = inputValue.trim().split(/\s+/);
-      setWordCount(inputValue.trim() === "" ? 0 : wordArray.length);
     }
   }, [inputValue]);
 
@@ -44,7 +40,7 @@ const InputArea: React.FC<Props> = ({ timerValue, wordLimit, isTimerMode }) => {
     fetch("/words.json")
       .then((response) => response.json())
       .then((data) => {
-        const randomWords = getRandomWords(data.words, 45); // Fetch 45 random words
+        const randomWords = getRandomWords(data.words, 50); // Fetch 50 random words
         setText(randomWords);
       });
   }, []);
@@ -72,20 +68,13 @@ const InputArea: React.FC<Props> = ({ timerValue, wordLimit, isTimerMode }) => {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    window.location.reload(); // Reload the page when modal is closed
+    window.location.reload();
   };
 
   return (
     <div className={currentTheme}>
       {!isInputFocused && !isModalOpen && <FocusInstructions />}
-      {timer !== null && isTimerMode && (
-        <div className={styles.timerContainer}>{timer}</div>
-      )}
-      {!isTimerMode && inputValue !== "" && (
-        <div className={styles.timerContainer}>
-          {wordCount}/{wordLimit}
-        </div>
-      )}
+      {timer !== null && <div className={styles.timerContainer}>{timer}</div>}
 
       <div className={styles.inputArea}>
         <TextDisplay

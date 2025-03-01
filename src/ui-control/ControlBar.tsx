@@ -1,97 +1,49 @@
 import React, { useState } from "react";
 import styles from "./ControlBar.module.css";
-import {
-  faClock,
-  faFont,
-  faQuoteLeft,
-  faHashtag,
-  faAt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTheme } from "../context/ThemeContext";
 
 interface Props {
   setTimerValue: React.Dispatch<React.SetStateAction<number>>;
-  setWordLimit: React.Dispatch<React.SetStateAction<number>>;
-  setIsTimerMode: React.Dispatch<React.SetStateAction<boolean>>;
-  isTimerMode: boolean;
+  disableControlBar: boolean;
 }
 
-const ControlBar: React.FC<Props> = ({
-  setTimerValue,
-  setIsTimerMode,
-  setWordLimit,
-  isTimerMode,
-}) => {
-  // Set default selected options
+const ControlBar: React.FC<Props> = ({ setTimerValue, disableControlBar }) => {
   const { currentTheme } = useTheme();
-  const [selectedOption, setSelectedOption] = useState<string>("time");
   const [selectedNumber, setSelectedNumber] = useState<string>("1");
-  const [isNumberOn, setNumberOn] = useState(false);
-  const [isPunctuationOn, setIsPunctuationOn] = useState(false);
-
-  const handleNumberClick = () => {
-    setNumberOn(!isNumberOn);
-  };
-
-  const handlePunctuationClick = () => {
-    setIsPunctuationOn(!isPunctuationOn);
-    //logic
-  };
-
-  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedOption(event.target.value);
-    event.target.value === "time"
-      ? setIsTimerMode(true)
-      : setIsTimerMode(false);
-  };
 
   const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedNumber(event.target.value);
+    const value = event.target.value;
+    setSelectedNumber(value);
 
-    if (event.target.value === "1") {
-      isTimerMode ? setTimerValue(15) : setWordLimit(50);
-    } else if (event.target.value === "2") {
-      isTimerMode ? setTimerValue(30) : setWordLimit(75);
+    if (value === "1") {
+      setTimerValue(15);
+    } else if (value === "2") {
+      setTimerValue(30);
     } else {
-      isTimerMode ? setTimerValue(60) : setWordLimit(100);
+      setTimerValue(60);
     }
   };
 
   return (
-    <div className={`${styles.container} ${currentTheme}`}>
+    <div
+      className={`${styles.container} ${currentTheme} ${
+        disableControlBar ? styles.disabled : ""
+      }`}
+    >
       <div className={`${styles.innerContainer} ${currentTheme}`}>
-        <label
-          className={`${styles.button} ${
-            selectedOption === "time" ? styles.selected : ""
-          }`}
-        >
+        <label className={`${styles.button} ${styles.selected}`}>
           <input
             type="radio"
             name="option"
             value="time"
-            checked={selectedOption === "time"}
-            onChange={handleOptionChange}
+            checked={true}
             className={styles.radioButton}
+            disabled={disableControlBar}
           />
           <FontAwesomeIcon className={styles.icon} icon={faClock} />
           <p className={styles.buttonText}>time</p>
-        </label>
-        <label
-          className={`${styles.button} ${
-            selectedOption === "words" ? styles.selected : ""
-          }`}
-        >
-          <input
-            type="radio"
-            name="option"
-            value="words"
-            checked={selectedOption === "words"}
-            onChange={handleOptionChange}
-            className={styles.radioButton}
-          />
-          <FontAwesomeIcon className={styles.icon} icon={faFont} />
-          <p className={styles.buttonText}>words</p>
         </label>
         <div className={styles.divider}></div>
         <label
@@ -106,8 +58,9 @@ const ControlBar: React.FC<Props> = ({
             checked={selectedNumber === "1"}
             onChange={handleNumberChange}
             className={styles.radioButton}
+            disabled={disableControlBar}
           />
-          <p className={styles.buttonText}>{isTimerMode ? 15 : 50}</p>
+          <p className={styles.buttonText}>15</p>
         </label>
         <label
           className={`${styles.button} ${
@@ -121,8 +74,9 @@ const ControlBar: React.FC<Props> = ({
             checked={selectedNumber === "2"}
             onChange={handleNumberChange}
             className={styles.radioButton}
+            disabled={disableControlBar}
           />
-          <p className={styles.buttonText}>{isTimerMode ? 30 : 75}</p>
+          <p className={styles.buttonText}>30</p>
         </label>
         <label
           className={`${styles.button} ${
@@ -136,8 +90,9 @@ const ControlBar: React.FC<Props> = ({
             checked={selectedNumber === "3"}
             onChange={handleNumberChange}
             className={styles.radioButton}
+            disabled={disableControlBar}
           />
-          <p className={styles.buttonText}>{isTimerMode ? 60 : 100}</p>
+          <p className={styles.buttonText}>60</p>
         </label>
       </div>
     </div>

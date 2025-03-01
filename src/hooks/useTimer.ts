@@ -1,13 +1,18 @@
 // useTimer.ts
 import { useState, useEffect, useRef } from "react";
 
-export const useTimer = (initialTime: number, onTimeEnd: () => void) => {
+export const useTimer = (
+  initialTime: number,
+  onTimeEnd: () => void,
+  setDisableControlBar: React.Dispatch<React.SetStateAction<boolean>>
+) => {
   const [timer, setTimer] = useState<number | null>(null);
   const [timerStarted, setTimerStarted] = useState<boolean>(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (timerStarted && timer !== null) {
+      setDisableControlBar(true);
       intervalRef.current = setInterval(() => {
         setTimer((prevTimer) => {
           if (prevTimer !== null) {
@@ -16,6 +21,7 @@ export const useTimer = (initialTime: number, onTimeEnd: () => void) => {
             } else {
               clearInterval(intervalRef.current as NodeJS.Timeout);
               //setTimerStarted(false);
+              setDisableControlBar(false);
               onTimeEnd();
               setTimer(null);
               return 0;
@@ -24,14 +30,14 @@ export const useTimer = (initialTime: number, onTimeEnd: () => void) => {
           return null;
         });
       }, 1000);
-
-      // Cleanup interval on component unmount
-      return () => {
-        if (intervalRef.current) {
-          clearInterval(intervalRef.current);
-        }
-      };
+    } else {
     }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, [timerStarted, timer]);
 
   const startTimer = () => {

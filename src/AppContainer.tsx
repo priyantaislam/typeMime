@@ -10,8 +10,7 @@ import { useState } from "react";
 function AppContainer() {
   const { currentTheme } = useTheme();
   const [timerValue, setTimerValue] = useState<number>(15);
-  const [wordLimit, setWordLimit] = useState<number>(50);
-  const [isTimerMode, setIsTimerMode] = useState<boolean>(true);
+  const [disableControlBar, setDisableControlBar] = useState<boolean>(false);
 
   return (
     <div className={`${styles.AppContainer} ${currentTheme}`}>
@@ -19,14 +18,11 @@ function AppContainer() {
         <NavBar />
         <ControlBar
           setTimerValue={setTimerValue}
-          setIsTimerMode={setIsTimerMode}
-          setWordLimit={setWordLimit}
-          isTimerMode={isTimerMode}
+          disableControlBar={disableControlBar}
         />
         <InputArea
           timerValue={timerValue}
-          isTimerMode={isTimerMode}
-          wordLimit={wordLimit}
+          setDisableControlBar={setDisableControlBar}
         />
         <Footer />
       </div>
