@@ -1,10 +1,10 @@
 .textDisplay {
   font-family: "Roboto Mono", monospace;
   color: var(--secondary-color-2);
-  font-size: 4vh;
+  font-size: 5vh;
   padding-left: 10vw;
   padding-right: 10vw;
-  padding-top: 5vh;
+  padding-top: 6vh;
   padding-bottom: 20vh;
   line-height: 1.6;
   text-align: left;
@@ -32,7 +32,7 @@
 
 @media only screen and (max-width: 600px) {
   .textDisplay {
-    font-size: 2vh;
+    font-size: 2.5vh;
   }
 }
 

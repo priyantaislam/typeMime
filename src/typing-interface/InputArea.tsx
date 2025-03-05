@@ -5,6 +5,7 @@ import TextDisplay from "./TextDisplay";
 import FocusInstructions from "./FocusInstruction";
 import { useTimer } from "../hooks/useTimer";
 import { useTheme } from "../context/ThemeContext";
+import { accuracy } from "../helpers/accuracy";
 
 interface Props {
   timerValue: number;
@@ -18,10 +19,15 @@ const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [text, setText] = useState<string>("");
   const { currentTheme } = useTheme();
+  const [currentWpm, setCurrentWpm] = useState<number>(0);
+  const [totalCorrectChars, setTotalCorrectChars] = useState<number>(0);
+  const [totalChars, setTotalChars] = useState<number>(0);
 
   const { timer, startTimer, timerStarted } = useTimer(
     timerValue,
-    () => setIsModalOpen(true),
+    () => {
+      setIsModalOpen(true);
+    },
     setDisableControlBar
   );
 
@@ -34,13 +40,31 @@ const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
     if (inputValue && !timerStarted) {
       startTimer();
     }
+
+    if (inputValue.length === text.length) {
+      const roundAccuracy = accuracy(inputValue, text, 0, 0) / 100;
+      const correctChars = Math.round(roundAccuracy * text.length);
+
+      setTotalCorrectChars(totalCorrectChars + correctChars);
+      setTotalChars(totalChars + text.length);
+
+      setCurrentWpm(currentWpm + inputValue.trim().split(/\s+/).length);
+      setInputValue("");
+
+      fetch("/words.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const randomWords = getRandomWords(data.words, 25);
+          setText(randomWords);
+        });
+    }
   }, [inputValue]);
 
   useEffect(() => {
     fetch("/words.json")
       .then((response) => response.json())
       .then((data) => {
-        const randomWords = getRandomWords(data.words, 50); // Fetch 50 random words
+        const randomWords = getRandomWords(data.words, 25);
         setText(randomWords);
       });
   }, []);
@@ -101,6 +125,9 @@ const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
         inputValue={inputValue}
         text={text}
         timerValue={timerValue}
+        currentWordCount={currentWpm}
+        correctChars={totalCorrectChars}
+        totalChars={totalChars}
       />
     </div>
   );
