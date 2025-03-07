@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import styles from "./Modal.module.css";
 import { useTheme } from "../context/ThemeContext";
 import { accuracy } from "../helpers/accuracy";
+import LineGraph from "./LineGraph";
 
 interface TimerModalProps {
   isOpen: boolean;
@@ -14,6 +15,7 @@ interface TimerModalProps {
   currentWordCount: number;
   correctChars: number;
   totalChars: number;
+  wordsPerSecond: number[];
 }
 
 interface InfoModalProps {
@@ -30,9 +32,13 @@ const TimerModal: React.FC<TimerModalProps> = ({
   currentWordCount,
   correctChars,
   totalChars,
+  wordsPerSecond,
 }) => {
   const { currentTheme } = useTheme();
-  //calculate the wpm here based on timerValue
+  // Calculate WPM and accuracy
+  const wordCount = (inputValue.match(/\b\w+\b/g) || []).length;
+  const wpm = Math.floor((wordCount / timerValue) * 60);
+  const accuracyValue = accuracy(text, inputValue, correctChars, totalChars);
 
   return (
     <Modal
@@ -42,19 +48,20 @@ const TimerModal: React.FC<TimerModalProps> = ({
       className={`${styles.modalOverlay} ${currentTheme}`}
       overlayClassName={`${styles.modalOverlay} ${currentTheme}`}
     >
-      <div className={styles.modalContent}>
-        <h3 className={styles.modalHeading}>wpm</h3>
-        <h2 className={styles.modalStat}>
-          {Math.floor(
-            ((inputValue.trim().split(/\s+/).length + currentWordCount) /
-              timerValue) *
-              60
-          )}
-        </h2>
-        <h3 className={styles.modalHeading}>acc</h3>
-        <h2 className={styles.modalStat}>
-          {accuracy(text, inputValue, correctChars, totalChars)}%
-        </h2>
+      <div className={styles.timerModalContent}>
+        <div className={styles.statsRow}>
+          <div className={styles.statItem}>
+            <div className={styles.modalHeading}>wpm</div>
+            <div className={styles.modalStat}>{wpm}</div>
+          </div>
+          <div className={styles.statItem}>
+            <div className={styles.modalHeading}>acc</div>
+            <div className={styles.modalStat}>{accuracyValue}%</div>
+          </div>
+        </div>
+
+        <LineGraph wordsPerSecond={wordsPerSecond} />
+
         <button className={styles.closeButton} onClick={onRequestClose}>
           X
         </button>

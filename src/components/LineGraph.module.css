@@ -1,0 +1,12 @@
+.graphContainer {
+  width: 50vw;
+  max-width: 800px;
+  height: 50vh;
+  max-height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color-2);
+  padding: 12px;
+  border-radius: 12px;
+}

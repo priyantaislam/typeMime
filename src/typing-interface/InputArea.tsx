@@ -22,13 +22,18 @@ const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
   const [currentWpm, setCurrentWpm] = useState<number>(0);
   const [totalCorrectChars, setTotalCorrectChars] = useState<number>(0);
   const [totalChars, setTotalChars] = useState<number>(0);
+  const [totalInput, setTotalInput] = useState<string>("");
+  const [wordsPerSecond, setWordsPerSecond] = useState<number[]>([]);
+  const [prevInputLength, setPrevInputLength] = useState(0);
 
   const { timer, startTimer, timerStarted } = useTimer(
     timerValue,
     () => {
       setIsModalOpen(true);
     },
-    setDisableControlBar
+    setDisableControlBar,
+    setWordsPerSecond,
+    totalInput
   );
 
   const getRandomWords = (wordList: string[], num: number) => {
@@ -77,10 +82,22 @@ const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
   const handleBlur = () => setIsInputFocused(false);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
+
+    const newChars = e.target.value.slice(prevInputLength);
+
+    setTotalInput((prev) => prev + newChars);
+
+    setPrevInputLength(e.target.value.length);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const cursorPosition = event.currentTarget.selectionStart;
+
+    if (event.key === " " && inputValue.length === 0) {
+      event.preventDefault();
+      return;
+    }
+
     if (
       event.key === "Backspace" &&
       cursorPosition !== null &&
@@ -122,12 +139,13 @@ const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
       <TimerModal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
-        inputValue={inputValue}
+        inputValue={totalInput}
         text={text}
         timerValue={timerValue}
         currentWordCount={currentWpm}
         correctChars={totalCorrectChars}
         totalChars={totalChars}
+        wordsPerSecond={wordsPerSecond}
       />
     </div>
   );
