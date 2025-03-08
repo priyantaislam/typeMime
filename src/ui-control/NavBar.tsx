@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "../context/ThemeContext";
 import DropdownMenu from "../components/Dropdown";
-import { InfoModal } from "../components/Modal";
+import { InfoModal } from "../components/InfoModal";
 import { useState } from "react";
 
 const NavBar: React.FC = () => {

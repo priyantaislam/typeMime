@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, useRef, useEffect } from "react";
 import styles from "./InputArea.module.css";
-import { TimerModal } from "../components/Modal";
+import { TimerModal } from "../components/TimerModal";
 import TextDisplay from "./TextDisplay";
 import FocusInstructions from "./FocusInstruction";
 import { useTimer } from "../hooks/useTimer";

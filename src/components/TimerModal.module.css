@@ -1,4 +1,3 @@
-/* Modal.module.css */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -44,7 +43,6 @@
 }
 
 @media (max-width: 1024px) {
-  /* Adjusted to max-width instead of max-height */
   .timerModalContent {
     height: 70vh;
     width: 60vw;
@@ -54,11 +52,11 @@
     margin-right: 12vw;
   }
   .modalStat {
-    font-size: 8vw !important; /* Ensure the media query is applied */
+    font-size: 8vw !important;
   }
 
   .modalHeading {
-    font-size: 4vw !important; /* Ensure the media query is applied */
+    font-size: 4vw !important;
   }
 }
 
