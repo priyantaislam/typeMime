@@ -12,7 +12,6 @@ interface TimerModalProps {
   inputValue: string;
   text: string;
   timerValue: number;
-  currentWordCount: number;
   correctChars: number;
   totalChars: number;
   wordsPerSecond: number[];
@@ -29,15 +28,20 @@ const TimerModal: React.FC<TimerModalProps> = ({
   inputValue,
   text,
   timerValue,
-  currentWordCount,
   correctChars,
   totalChars,
   wordsPerSecond,
 }) => {
   const { currentTheme } = useTheme();
   // Calculate WPM and accuracy
-  const wordCount = (inputValue.match(/\b\w+\b/g) || []).length;
-  const wpm = Math.floor((wordCount / timerValue) * 60);
+  const wordCount = wordsPerSecond[wordsPerSecond.length - 1];
+  const wpm =
+    timerValue === 60
+      ? wordCount
+      : timerValue === 30
+      ? wordCount * 2
+      : wordCount * 4;
+
   const accuracyValue = accuracy(text, inputValue, correctChars, totalChars);
 
   return (
@@ -58,9 +62,15 @@ const TimerModal: React.FC<TimerModalProps> = ({
             <div className={styles.modalHeading}>acc</div>
             <div className={styles.modalStat}>{accuracyValue}%</div>
           </div>
+          <div className={styles.statItem}>
+            <div className={styles.modalHeading}>words</div>
+            <div className={styles.modalStat}>{wordCount}</div>
+          </div>
         </div>
 
-        <LineGraph wordsPerSecond={wordsPerSecond} />
+        <div className={styles.graphContainer}>
+          <LineGraph wordsPerSecond={wordsPerSecond} />
+        </div>
 
         <button className={styles.closeButton} onClick={onRequestClose}>
           X

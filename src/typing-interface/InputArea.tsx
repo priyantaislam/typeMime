@@ -19,12 +19,11 @@ const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [text, setText] = useState<string>("");
   const { currentTheme } = useTheme();
-  const [currentWpm, setCurrentWpm] = useState<number>(0);
-  const [totalCorrectChars, setTotalCorrectChars] = useState<number>(0);
-  const [totalChars, setTotalChars] = useState<number>(0);
   const [totalInput, setTotalInput] = useState<string>("");
   const [wordsPerSecond, setWordsPerSecond] = useState<number[]>([]);
   const [prevInputLength, setPrevInputLength] = useState(0);
+  const [totalCorrectChars, setTotalCorrectChars] = useState<number>(0);
+  const [totalChars, setTotalChars] = useState<number>(0);
 
   const { timer, startTimer, timerStarted } = useTimer(
     timerValue,
@@ -53,8 +52,8 @@ const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
       setTotalCorrectChars(totalCorrectChars + correctChars);
       setTotalChars(totalChars + text.length);
 
-      setCurrentWpm(currentWpm + inputValue.trim().split(/\s+/).length);
       setInputValue("");
+      setTotalInput((prev) => prev + " ");
 
       fetch("/words.json")
         .then((response) => response.json())
@@ -139,10 +138,9 @@ const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
       <TimerModal
         isOpen={isModalOpen}
         onRequestClose={closeModal}
-        inputValue={totalInput}
+        inputValue={inputValue}
         text={text}
         timerValue={timerValue}
-        currentWordCount={currentWpm}
         correctChars={totalCorrectChars}
         totalChars={totalChars}
         wordsPerSecond={wordsPerSecond}
