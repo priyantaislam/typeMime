@@ -65,6 +65,7 @@
 .themeCard {
   background-color: var(--primary-color-1);
   color: var(--secondary-color-1);
+  padding: 10px 15px;
   border-radius: 8px;
   cursor: pointer;
   font-family: "Roboto Mono", monospace;
