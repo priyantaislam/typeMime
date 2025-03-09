@@ -1,10 +1,66 @@
 [
-  { "name": "default", "class": "root" },
-  { "name": "pastel", "class": "pastel" },
-  { "name": "terminal", "class": "terminal" },
-  { "name": "crimson tide", "class": "crimson-tide" },
-  { "name": "dragon", "class": "dragon" },
-  { "name": "neon cyber", "class": "neon-cyber" },
-  { "name": "ocean abyss", "class": "ocean-abyss" },
-  { "name": "forest dusk", "class": "forest-dusk" }
+  {
+    "name": "default",
+    "class": "root",
+    "primaryColor1": "#34343b",
+    "secondaryColor1": "#c5c6c1",
+    "secondaryColor2": "#93959477",
+    "accentColor1": "#bca441"
+  },
+  {
+    "name": "pastel",
+    "class": "pastel",
+    "primaryColor1": "#c38370",
+    "secondaryColor1": "#f6eee0",
+    "secondaryColor2": "#e4b7a0",
+    "accentColor1": "#ffd700"
+  },
+  {
+    "name": "terminal",
+    "class": "terminal",
+    "primaryColor1": "#1c1d1c",
+    "secondaryColor1": "#7ca225",
+    "secondaryColor2": "#848484",
+    "accentColor1": "#7ca225"
+  },
+  {
+    "name": "crimson tide",
+    "class": "crimson-tide",
+    "primaryColor1": "#cd1225",
+    "secondaryColor1": "#f7cbc6",
+    "secondaryColor2": "#661111",
+    "accentColor1": "#faba2d"
+  },
+  {
+    "name": "dragon",
+    "class": "dragon",
+    "primaryColor1": "#0f0000",
+    "secondaryColor1": "#b31313",
+    "secondaryColor2": "#683434",
+    "accentColor1": "#b31313"
+  },
+  {
+    "name": "neon cyber",
+    "class": "neon-cyber",
+    "primaryColor1": "#000000",
+    "secondaryColor1": "#00ffff",
+    "secondaryColor2": "#ff00ff",
+    "accentColor1": "#ff9900"
+  },
+  {
+    "name": "ocean abyss",
+    "class": "ocean-abyss",
+    "primaryColor1": "#001f3f",
+    "secondaryColor1": "#88c0d0",
+    "secondaryColor2": "#2e86ab",
+    "accentColor1": "#ffcc00"
+  },
+  {
+    "name": "forest dusk",
+    "class": "forest-dusk",
+    "primaryColor1": "#2e3b2e",
+    "secondaryColor1": "#a4c69c",
+    "secondaryColor2": "#5a7d5a",
+    "accentColor1": "#ffb347"
+  }
 ]

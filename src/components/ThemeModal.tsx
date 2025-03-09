@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ThemeModal.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPalette, faTimes, faCog } from "@fortawesome/free-solid-svg-icons";
+import { faCog, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "../context/ThemeContext";
 import themes from "../data/themes.json";
 
@@ -39,6 +39,19 @@ const ThemeModal = () => {
                   key={theme.class}
                   className={styles.themeCard}
                   onClick={() => handleThemeChange(theme.class)}
+                  style={{
+                    backgroundColor: theme.primaryColor1,
+                    color: theme.secondaryColor1,
+                    borderColor: theme.secondaryColor2,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = theme.accentColor1;
+                    e.currentTarget.style.borderColor = theme.accentColor1;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = theme.secondaryColor1;
+                    e.currentTarget.style.borderColor = theme.secondaryColor2;
+                  }}
                 >
                   {theme.name}
                 </div>
