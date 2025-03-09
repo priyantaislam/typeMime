@@ -12,6 +12,7 @@ import { useTheme } from "../context/ThemeContext";
 import DropdownMenu from "../components/Dropdown";
 import { InfoModal } from "../components/InfoModal";
 import { useState } from "react";
+import ThemeModal from "../components/ThemeModal";
 
 const NavBar: React.FC = () => {
   const { currentTheme, setTheme } = useTheme();
@@ -42,7 +43,7 @@ const NavBar: React.FC = () => {
       <button className={styles.button} onClick={handleClickRefresh}>
         <FontAwesomeIcon className={styles.optionIcon} icon={faKeyboard} />
       </button>
-      <DropdownMenu />
+      <ThemeModal />
       <button className={styles.button} onClick={handleClickInfo}>
         <FontAwesomeIcon className={styles.optionIcon} icon={faInfoCircle} />
       </button>
