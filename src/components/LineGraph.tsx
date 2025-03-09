@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -29,28 +29,43 @@ interface LineGraphProps {
 }
 
 const LineGraph: React.FC<LineGraphProps> = ({ wordsPerSecond }) => {
+  const colorRef = useRef<HTMLDivElement | null>(null);
   const [themeColors, setThemeColors] = useState({
-    primary: "#8884d8",
+    primary: "#bca441",
     secondary: "#bca441",
-    text: "#ffffff",
-    grid: "rgba(255,255,255,0.1)",
-    tooltipBg: "#222",
+    text: "#bca441",
+    grid: "#4242422f",
+    tooltipBg: "#bca441",
   });
 
   useEffect(() => {
-    const rootStyles = getComputedStyle(document.documentElement);
-    setThemeColors({
-      primary:
-        rootStyles.getPropertyValue("--primary-color").trim() || "#8884d8",
-      secondary:
-        rootStyles.getPropertyValue("--secondary-color").trim() || "#bca441",
-      text: rootStyles.getPropertyValue("--text-color").trim() || "#ffffff",
-      grid:
-        rootStyles.getPropertyValue("--grid-color").trim() ||
-        "rgba(255,255,255,0.1)",
-      tooltipBg: rootStyles.getPropertyValue("--tooltip-bg").trim() || "#222",
+    const updateThemeColors = () => {
+      if (colorRef.current) {
+        const styles = getComputedStyle(colorRef.current);
+        setThemeColors({
+          primary: styles.getPropertyValue("color").trim(),
+          secondary: styles.getPropertyValue("color").trim(),
+          text: styles.getPropertyValue("color").trim(),
+          grid: styles.getPropertyValue("background-color").trim(),
+          tooltipBg: styles.getPropertyValue("color").trim(),
+        });
+      }
+    };
+
+    updateThemeColors();
+
+    const observer = new MutationObserver(updateThemeColors);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["style"],
     });
+
+    return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    console.log("Updated theme colors:", themeColors);
+  }, [themeColors]);
 
   const data: ChartData<"line", number[], string> = {
     labels: wordsPerSecond.map((_, index) => `${index + 1}`),
@@ -59,7 +74,7 @@ const LineGraph: React.FC<LineGraphProps> = ({ wordsPerSecond }) => {
         label: "words typed over time",
         data: wordsPerSecond,
         borderColor: themeColors.secondary,
-        backgroundColor: `${themeColors.secondary}`,
+        backgroundColor: themeColors.secondary,
         borderWidth: 3,
         tension: 0.4,
         pointRadius: 0,
@@ -73,46 +88,30 @@ const LineGraph: React.FC<LineGraphProps> = ({ wordsPerSecond }) => {
     maintainAspectRatio: false,
     scales: {
       x: {
-        grid: {
-          color: themeColors.grid,
-        },
+        grid: { color: themeColors.grid },
         ticks: {
           color: themeColors.secondary,
-          font: {
-            size: 14,
-            family: "Roboto Mono",
-          },
+          font: { size: 14, family: "Roboto Mono" },
         },
         title: {
           display: true,
           text: "time",
           color: themeColors.secondary,
-          font: {
-            size: 16,
-            family: "Roboto Mono",
-          },
+          font: { size: 16, family: "Roboto Mono" },
         },
       },
       y: {
-        grid: {
-          color: themeColors.grid,
-        },
+        grid: { color: themeColors.grid },
         ticks: {
           color: themeColors.secondary,
-          font: {
-            size: 14,
-            family: "Roboto Mono",
-          },
+          font: { size: 14, family: "Roboto Mono" },
           stepSize: 1,
         },
         title: {
           display: true,
           text: "words",
           color: themeColors.secondary,
-          font: {
-            size: 16,
-            family: "Roboto Mono",
-          },
+          font: { size: 16, family: "Roboto Mono" },
         },
       },
     },
@@ -120,11 +119,8 @@ const LineGraph: React.FC<LineGraphProps> = ({ wordsPerSecond }) => {
       legend: {
         display: true,
         labels: {
-          color: themeColors.secondary, // Change to secondary 2 color
-          font: {
-            size: 14,
-            family: "Roboto Mono",
-          },
+          color: themeColors.secondary,
+          font: { size: 14, family: "Roboto Mono" },
         },
       },
       tooltip: {
@@ -137,6 +133,17 @@ const LineGraph: React.FC<LineGraphProps> = ({ wordsPerSecond }) => {
 
   return (
     <div className={styles.graphContainer}>
+      <div
+        ref={colorRef}
+        style={{
+          color: "var(--accent-color-1)",
+          backgroundColor: "var(--accent-color-2)",
+          position: "absolute",
+          width: "0px",
+          height: "0px",
+          overflow: "hidden",
+        }}
+      />
       <Line data={data} options={options} />
     </div>
   );

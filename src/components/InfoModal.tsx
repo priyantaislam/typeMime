@@ -46,11 +46,11 @@ const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onRequestClose }) => {
           <FontAwesomeIcon className={styles.optionIcon} icon={faChartBar} />{" "}
           Stat
         </p>
-        <p className={styles.infoText}>WPM - Words per minute</p>
+        <p className={styles.infoText}>wpm - words per minute</p>
         <p className={styles.infoText}>
-          ACC - Percentage of correctly typed characters
+          acc - percentage of correctly typed characters
         </p>
-        <p className={styles.infoText}>Words - Total words typed</p>
+        <p className={styles.infoText}>words - total words typed</p>
         <p className={styles.infoTextSubHeader}>
           <FontAwesomeIcon className={styles.optionIcon} icon={faGithub} />{" "}
           Github

@@ -1,15 +1,9 @@
 import React, { useState } from "react";
 import styles from "./Dropdown.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faTerminal,
-  faKeyboard,
-  faCog,
-  faInfoCircle,
-  faMask,
-  faPaintBrush,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCog } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "../context/ThemeContext";
+import themes from "../data/themes.json";
 
 const DropdownMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,19 +13,9 @@ const DropdownMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const onClickRoot = () => {
-    setTheme("root");
-    setIsOpen(!isOpen);
-  };
-
-  const onClickLight = () => {
-    setTheme("light-theme");
-    setIsOpen(!isOpen);
-  };
-
-  const onClickDark = () => {
-    setTheme("dark-theme");
-    setIsOpen(!isOpen);
+  const handleThemeChange = (themeClass: string) => {
+    setTheme(themeClass);
+    setIsOpen(false);
   };
 
   return (
@@ -41,9 +25,14 @@ const DropdownMenu = () => {
       </button>
       {isOpen && (
         <ul className={styles.dropdownMenu}>
-          <li onClick={onClickRoot}>default</li>
-          <li onClick={onClickLight}>light</li>
-          <li onClick={onClickDark}>dark</li>
+          {themes.map((theme) => (
+            <li
+              key={theme.class}
+              onClick={() => handleThemeChange(theme.class)}
+            >
+              {theme.name}
+            </li>
+          ))}
         </ul>
       )}
     </div>

@@ -1,0 +1,10 @@
+[
+  { "name": "default", "class": "root" },
+  { "name": "pastel", "class": "pastel" },
+  { "name": "terminal", "class": "terminal" },
+  { "name": "crimson tide", "class": "crimson-tide" },
+  { "name": "dragon", "class": "dragon" },
+  { "name": "neon cyber", "class": "neon-cyber" },
+  { "name": "ocean abyss", "class": "ocean-abyss" },
+  { "name": "forest dusk", "class": "forest-dusk" }
+]

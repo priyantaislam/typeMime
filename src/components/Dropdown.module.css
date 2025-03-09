@@ -18,6 +18,10 @@
   cursor: pointer;
 }
 
+.dropdownToggle :hover {
+  color: var(--secondary-color-1);
+}
+
 .dropdownMenu {
   position: absolute;
   top: 100%;

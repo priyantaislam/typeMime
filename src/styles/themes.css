@@ -1,4 +1,3 @@
-/* styles/themes.css */
 :root {
   --primary-color-1: #34343b;
   --primary-color-2: #242429;
@@ -9,22 +8,17 @@
   --error-color: #c52e42;
 }
 
-/* Light Theme */
-.light-theme {
+.pastel {
   --primary-color-1: #c38370;
   --primary-color-2: #a45c40;
   --secondary-color-1: #f6eee0;
   --secondary-color-2: #e4b7a0;
-  /* Generating accent colors */
-  --accent-color-1: #ffd700; /* Default blue accent */
-  --accent-color-2: #f08080; /* Green accent */
-
-  /* Error color */
+  --accent-color-1: #ffd700;
+  --accent-color-2: #f08080;
   --error-color: #dc3545;
 }
 
-/* Dark Theme */
-.dark-theme {
+.terminal {
   --primary-color-1: #1c1d1c;
   --primary-color-2: #202220;
   --secondary-color-1: #7ca225;
@@ -32,4 +26,54 @@
   --accent-color-1: #7ca225;
   --accent-color-2: #4242422f;
   --error-color: #bb2cce;
+}
+
+.crimson-tide {
+  --primary-color-1: #cd1225;
+  --primary-color-2: #9e1121;
+  --secondary-color-1: #f7cbc6;
+  --secondary-color-2: #661111;
+  --accent-color-1: #faba2d;
+  --accent-color-2: #be2008;
+  --error-color: #fecb2d;
+}
+
+.dragon {
+  --primary-color-1: #0f0000;
+  --primary-color-2: #200a0a;
+  --secondary-color-1: #b31313;
+  --secondary-color-2: #683434;
+  --accent-color-1: #b31313;
+  --accent-color-2: #b31313;
+  --error-color: #e3b611;
+}
+
+.neon-cyber {
+  --primary-color-1: #000000;
+  --primary-color-2: #0f0e0e;
+  --secondary-color-1: #00ffff;
+  --secondary-color-2: #ff00ff;
+  --accent-color-1: #ff9900;
+  --accent-color-2: #00ff00;
+  --error-color: #ff0033;
+}
+
+.ocean-abyss {
+  --primary-color-1: #001f3f;
+  --primary-color-2: #012a4a;
+  --secondary-color-1: #88c0d0;
+  --secondary-color-2: #2e86ab;
+  --accent-color-1: #ffcc00;
+  --accent-color-2: #bbdefb;
+  --error-color: #ff4c4c;
+}
+
+.forest-dusk {
+  --primary-color-1: #2e3b2e;
+  --primary-color-2: #1f291f;
+  --secondary-color-1: #a4c69c;
+  --secondary-color-2: #5a7d5a;
+  --accent-color-1: #ffb347;
+  --accent-color-2: #e08e45;
+  --error-color: #e63946;
 }
