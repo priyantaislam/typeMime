@@ -15,7 +15,6 @@ interface Props {
 const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [inputValue, setInputValue] = useState<string>("");
-  const inputRef = useRef<HTMLInputElement>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [text, setText] = useState<string>("");
   const { currentTheme } = useTheme();
@@ -24,6 +23,9 @@ const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
   const [prevInputLength, setPrevInputLength] = useState(0);
   const [totalCorrectChars, setTotalCorrectChars] = useState<number>(0);
   const [totalChars, setTotalChars] = useState<number>(0);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const audioRef = useRef(new Audio("/click.wav"));
 
   const { timer, startTimer, timerStarted } = useTimer(
     timerValue,
@@ -87,6 +89,13 @@ const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
     setTotalInput((prev) => prev + newChars);
 
     setPrevInputLength(e.target.value.length);
+
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current
+        .play()
+        .catch((err) => console.error("Audio play error:", err));
+    }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {

@@ -62,5 +62,21 @@
     "secondaryColor1": "#a4c69c",
     "secondaryColor2": "#5a7d5a",
     "accentColor1": "#ffb347"
+  },
+  {
+    "name": "VIC-20",
+    "class": "vic20",
+    "primaryColor1": "#3f3f3f",
+    "secondaryColor1": "#f3dfc1",
+    "secondaryColor2": "#a86f30",
+    "accentColor1": "#ff7f00"
+  },
+  {
+    "name": "C64",
+    "class": "c64",
+    "primaryColor1": "#40318d",
+    "secondaryColor1": "#a9c4e4",
+    "secondaryColor2": "#7f8c8d",
+    "accentColor1": "#af4f2f"
   }
 ]

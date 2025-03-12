@@ -77,3 +77,24 @@
   --accent-color-2: #e08e45;
   --error-color: #e63946;
 }
+
+.vic20 {
+  --primary-color-1: #3f3f3f;
+  --primary-color-2: #2b2b2b;
+  --secondary-color-1: #f3dfc1;
+  --secondary-color-2: #a86f30;
+  --accent-color-1: #ff7f00;
+  --accent-color-2: #c34632;
+  --error-color: #ff0000;
+}
+
+/* Commodore 64 Theme */
+.c64 {
+  --primary-color-1: #40318d;
+  --primary-color-2: #322b75;
+  --secondary-color-1: #a9c4e4;
+  --secondary-color-2: #7f8c8d;
+  --accent-color-1: #af4f2f;
+  --accent-color-2: #57a64a;
+  --error-color: #d91e18;
+}
