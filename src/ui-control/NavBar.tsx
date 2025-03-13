@@ -2,9 +2,7 @@ import React from "react";
 import styles from "./NavBar.module.css"; // Import CSS Modules styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faTerminal,
   faKeyboard,
-  faCog,
   faInfoCircle,
   faMask,
 } from "@fortawesome/free-solid-svg-icons";
@@ -12,9 +10,13 @@ import { useTheme } from "../context/ThemeContext";
 import DropdownMenu from "../components/Dropdown";
 import { InfoModal } from "../components/InfoModal";
 import { useState } from "react";
-import ThemeModal from "../components/ThemeModal";
+import SettingsModal from "../components/SettingsModal";
 
-const NavBar: React.FC = () => {
+interface Props {
+  setSound: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const NavBar: React.FC<Props> = ({ setSound }) => {
   const { currentTheme, setTheme } = useTheme();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -43,7 +45,7 @@ const NavBar: React.FC = () => {
       <button className={styles.button} onClick={handleClickRefresh}>
         <FontAwesomeIcon className={styles.optionIcon} icon={faKeyboard} />
       </button>
-      <ThemeModal />
+      <SettingsModal setSound={setSound} />
       <button className={styles.button} onClick={handleClickInfo}>
         <FontAwesomeIcon className={styles.optionIcon} icon={faInfoCircle} />
       </button>

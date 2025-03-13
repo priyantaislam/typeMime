@@ -48,6 +48,26 @@
   --error-color: #e3b611;
 }
 
+.blossom {
+  --primary-color-1: #18181a;
+  --primary-color-2: #0f0f10;
+  --secondary-color-1: #e4609b;
+  --secondary-color-2: #47bac0;
+  --accent-color-1: #47bac0;
+  --accent-color-2: #fff;
+  --error-color: #b6af68;
+}
+
+.retro {
+  --primary-color-1: #dad3c1;
+  --primary-color-2: #918b7d;
+  --secondary-color-1: #1d1b17;
+  --secondary-color-2: #bf616a;
+  --accent-color-1: #793e44;
+  --accent-color-2: #c8c3b3;
+  --error-color: #bf616a;
+}
+
 .neon-cyber {
   --primary-color-1: #000000;
   --primary-color-2: #0f0e0e;
@@ -88,7 +108,6 @@
   --error-color: #ff0000;
 }
 
-/* Commodore 64 Theme */
 .c64 {
   --primary-color-1: #40318d;
   --primary-color-2: #322b75;

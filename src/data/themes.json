@@ -40,6 +40,22 @@
     "accentColor1": "#b31313"
   },
   {
+    "name": "blossom",
+    "class": "blossom",
+    "primaryColor1": "#18181a",
+    "secondaryColor1": "#e4609b",
+    "secondaryColor2": "#47bac0",
+    "accentColor1": "#fff"
+  },
+  {
+    "name": "retro",
+    "class": "retro",
+    "primaryColor1": "#dad3c1",
+    "secondaryColor1": "#1d1b17",
+    "secondaryColor2": "#c8c3b3",
+    "accentColor1": "#793e44"
+  },
+  {
     "name": "neon cyber",
     "class": "neon-cyber",
     "primaryColor1": "#000000",

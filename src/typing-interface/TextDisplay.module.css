@@ -8,7 +8,7 @@
   padding-bottom: 20vh;
   line-height: 1.6;
   text-align: left;
-  overflow: hidden; /* Ensure content doesn't overflow its container */
+  overflow: hidden;
 }
 
 .blurred {
@@ -27,7 +27,7 @@
 .incorrectChar {
   color: var(--error-color);
   text-decoration: underline;
-  text-underline-offset: 8px;
+  text-underline-offset: 2vh;
 }
 
 @media only screen and (max-width: 600px) {
@@ -38,7 +38,7 @@
 
 .underlinedWord {
   text-decoration: underline;
-  text-underline-offset: 1vh; /* Adjust the offset as needed */
+  text-underline-offset: 2vh; /* Adjust the offset as needed */
   text-decoration-color: var(--accent-color-1);
 }
 

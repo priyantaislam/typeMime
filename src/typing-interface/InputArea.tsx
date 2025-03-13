@@ -10,9 +10,14 @@ import { accuracy } from "../helpers/accuracy";
 interface Props {
   timerValue: number;
   setDisableControlBar: React.Dispatch<React.SetStateAction<boolean>>;
+  sound: string;
 }
 
-const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
+const InputArea: React.FC<Props> = ({
+  timerValue,
+  setDisableControlBar,
+  sound,
+}) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [inputValue, setInputValue] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
