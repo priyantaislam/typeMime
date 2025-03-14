@@ -7,16 +7,11 @@ import {
   faMask,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "../context/ThemeContext";
-import DropdownMenu from "../components/Dropdown";
 import { InfoModal } from "../components/InfoModal";
 import { useState } from "react";
 import SettingsModal from "../components/SettingsModal";
 
-interface Props {
-  setSound: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const NavBar: React.FC<Props> = ({ setSound }) => {
+const NavBar: React.FC = () => {
   const { currentTheme, setTheme } = useTheme();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -45,7 +40,7 @@ const NavBar: React.FC<Props> = ({ setSound }) => {
       <button className={styles.button} onClick={handleClickRefresh}>
         <FontAwesomeIcon className={styles.optionIcon} icon={faKeyboard} />
       </button>
-      <SettingsModal setSound={setSound} />
+      <SettingsModal />
       <button className={styles.button} onClick={handleClickInfo}>
         <FontAwesomeIcon className={styles.optionIcon} icon={faInfoCircle} />
       </button>

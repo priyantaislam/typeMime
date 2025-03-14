@@ -38,16 +38,16 @@
 
 .underlinedWord {
   text-decoration: underline;
-  text-underline-offset: 2vh; /* Adjust the offset as needed */
+  text-underline-offset: 2vh;
   text-decoration-color: var(--accent-color-1);
 }
 
 @keyframes blink {
   0%,
   100% {
-    text-decoration-color: transparent; /* Start and end with transparent */
+    text-decoration-color: transparent;
   }
   50% {
-    text-decoration-color: #bca441; /* Show color in the middle */
+    text-decoration-color: #bca441;
   }
 }

@@ -6,23 +6,23 @@ import FocusInstructions from "./FocusInstruction";
 import { useTimer } from "../hooks/useTimer";
 import { useTheme } from "../context/ThemeContext";
 import { accuracy } from "../helpers/accuracy";
+import { useSound } from "../context/SoundContext";
+import { useLanguage } from "../context/LanguageContext";
 
 interface Props {
   timerValue: number;
   setDisableControlBar: React.Dispatch<React.SetStateAction<boolean>>;
-  sound: string;
 }
 
-const InputArea: React.FC<Props> = ({
-  timerValue,
-  setDisableControlBar,
-  sound,
-}) => {
+const InputArea: React.FC<Props> = ({ timerValue, setDisableControlBar }) => {
+  const { sound } = useSound();
+  const { language } = useLanguage();
+  const { currentTheme } = useTheme();
+
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [inputValue, setInputValue] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [text, setText] = useState<string>("");
-  const { currentTheme } = useTheme();
   const [totalInput, setTotalInput] = useState<string>("");
   const [wordsPerSecond, setWordsPerSecond] = useState<number[]>([]);
   const [prevInputLength, setPrevInputLength] = useState(0);
@@ -30,7 +30,11 @@ const InputArea: React.FC<Props> = ({
   const [totalChars, setTotalChars] = useState<number>(0);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const audioRef = useRef(new Audio("/click.wav"));
+  const audioRef = useRef(new Audio(`/${sound}.wav`));
+
+  useEffect(() => {
+    audioRef.current.src = `/${sound}.wav`;
+  }, [sound]);
 
   const { timer, startTimer, timerStarted } = useTimer(
     timerValue,
@@ -62,7 +66,7 @@ const InputArea: React.FC<Props> = ({
       setInputValue("");
       setTotalInput((prev) => prev + " ");
 
-      fetch("/words.json")
+      fetch(`/${language}.json`)
         .then((response) => response.json())
         .then((data) => {
           const randomWords = getRandomWords(data.words, 25);
@@ -72,7 +76,7 @@ const InputArea: React.FC<Props> = ({
   }, [inputValue]);
 
   useEffect(() => {
-    fetch("/words.json")
+    fetch(`/${language}.json`)
       .then((response) => response.json())
       .then((data) => {
         const randomWords = getRandomWords(data.words, 25);

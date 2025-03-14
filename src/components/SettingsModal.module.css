@@ -25,15 +25,15 @@
   align-items: flex-start;
   text-align: left;
   z-index: 10000;
-  overflow: hidden; /* Prevent overflow */
+  overflow: hidden;
 }
 
 .modalBody {
-  flex: 1; /* Fills remaining space */
+  flex: 1;
   overflow-y: auto;
   max-height: 100%;
   width: 100%;
-  padding-right: 10px; /* Prevent scrollbar overlap */
+  padding-right: 10px;
 }
 
 .modalBody::-webkit-scrollbar {
@@ -102,7 +102,16 @@
 }
 
 .themeGrid,
-.soundGrid {
+.soundGrid,
+.languageGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  overflow: visible;
+  padding-left: 0.5vw;
+}
+
+.languageGrid {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -158,7 +167,8 @@
   color: var(--secondary-color-1);
 }
 
-.soundCard {
+.soundCard,
+.languageCard {
   background-color: var(--primary-color-1);
   color: var(--secondary-color-1);
   padding: 10px 15px;
@@ -175,6 +185,12 @@
 }
 
 .soundCard:hover {
+  background-color: var(--secondary-color-1);
+  color: var(--primary-color-1);
+  transform: scale(1.1);
+}
+
+.languageCard:hover {
   background-color: var(--secondary-color-1);
   color: var(--primary-color-1);
   transform: scale(1.1);

@@ -5,15 +5,24 @@ import { faCog, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "../context/ThemeContext";
 import themes from "../data/themes.json";
 import sounds from "../data/sounds.json";
+import languages from "../data/languages.json";
+import { useSound } from "../context/SoundContext";
+import { useLanguage } from "../context/LanguageContext";
 
-interface Props {
-  setSound: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const SettingsModal: React.FC<Props> = ({ setSound }) => {
+const SettingsModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSound, setSelectedSound] = useState<string>("none");
+  const [selectedSound, setSelectedSound] = useState<string>(
+    localStorage.getItem("sound") || "click"
+  );
+  const [selectedTheme, setSelectedTheme] = useState<string>(
+    localStorage.getItem("theme") || "default"
+  );
+  const [selectedLanguage, setSelectedLanguage] = useState<string>(
+    localStorage.getItem("language") || "english"
+  );
   const { setTheme } = useTheme();
+  const { sound, setSound } = useSound();
+  const { language, setLanguage } = useLanguage();
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
@@ -21,11 +30,17 @@ const SettingsModal: React.FC<Props> = ({ setSound }) => {
 
   const handleThemeChange = (themeClass: string) => {
     setTheme(themeClass);
+    setSelectedTheme(themeClass);
   };
 
   const handleSoundChange = (sound: string) => {
     setSelectedSound(sound);
     setSound(sound);
+  };
+
+  const handleLanguageChange = (languageKey: string) => {
+    setSelectedLanguage(languageKey);
+    setLanguage(languageKey);
   };
 
   return (
@@ -88,6 +103,28 @@ const SettingsModal: React.FC<Props> = ({ setSound }) => {
                     {sound}
                   </div>
                 ))}
+              </div>
+
+              <h2
+                className={styles.infoTextHeader}
+                style={{ marginTop: "2vh" }}
+              >
+                Language
+              </h2>
+              <div className={styles.languageGrid}>
+                {Object.entries(languages).map(
+                  ([languageKey, languageName]) => (
+                    <div
+                      key={languageKey}
+                      className={`${styles.languageCard} ${
+                        selectedLanguage === languageKey ? styles.selected : ""
+                      }`}
+                      onClick={() => handleLanguageChange(languageKey)}
+                    >
+                      {languageName}
+                    </div>
+                  )
+                )}
               </div>
             </div>
           </div>

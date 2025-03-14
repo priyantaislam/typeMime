@@ -26,8 +26,8 @@
 
 .timerContainer {
   position: absolute;
-  top: 20vh; /* Adjust to position just above text-container */
-  left: 10vw; /* Adjust left margin as needed */
+  top: 20vh;
+  left: 10vw;
   font-family: "Roboto Mono", monospace;
   color: var(--accent-color-1);
   font-size: 48px;

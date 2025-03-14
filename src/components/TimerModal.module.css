@@ -29,8 +29,6 @@
 .timerModalContent {
   position: relative;
   background-color: var(--primary-color-1);
-  width: 50vw;
-  height: 60vh;
   border-radius: 8px;
   padding: 20px;
   display: flex;
@@ -40,14 +38,31 @@
   text-align: center;
   z-index: 10000;
   overflow: auto;
+  padding: 5vh;
+
+  min-width: fit-content;
+  min-height: fit-content;
+  max-width: 90vw;
+  max-height: 90vh;
 }
 
 @media (max-width: 1024px) {
   .timerModalContent {
-    height: 70vh;
-    width: 60vw;
+    max-width: 80vw;
+    max-height: 85vh;
+    padding: 2vh;
   }
+}
 
+@media (max-width: 768px) {
+  .timerModalContent {
+    max-width: 90vw;
+    max-height: 90vh;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 1024px) {
   .statsRow {
     margin-right: 12vw;
   }

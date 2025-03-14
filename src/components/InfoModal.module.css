@@ -24,6 +24,9 @@
   align-items: flex-start;
   text-align: left;
   z-index: 10000;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
 }
 
 .closeButton {
@@ -71,4 +74,59 @@
 }
 
 @media (max-width: 1024px) {
+  .modalContent {
+    width: 50%;
+    height: 50%;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    width: 80%;
+    height: auto;
+    padding: 12px;
+  }
+
+  .infoTextHeader {
+    font-size: 20px;
+  }
+
+  .infoTextSubHeader {
+    font-size: 14px;
+  }
+
+  .infoText {
+    font-size: 12px;
+  }
+
+  .closeButton {
+    font-size: 1.2em;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .infoTextHeader {
+    font-size: 18px;
+  }
+
+  .infoTextSubHeader {
+    font-size: 13px;
+  }
+
+  .infoText {
+    font-size: 11px;
+  }
+
+  .closeButton {
+    font-size: 1em;
+    padding: 4px;
+  }
 }

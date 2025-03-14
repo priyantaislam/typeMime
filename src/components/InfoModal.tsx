@@ -24,6 +24,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onRequestClose }) => {
       contentLabel="Timer Ended"
       className={`${styles.modalOverlay} ${currentTheme}`}
       overlayClassName={`${styles.modalOverlay} ${currentTheme}`}
+      shouldCloseOnOverlayClick={true}
     >
       <div className={styles.modalContent}>
         <p className={styles.infoTextHeader}>
@@ -40,7 +41,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onRequestClose }) => {
         </p>
         <p className={styles.infoText}>
           By default, the test uses a word set of 200 most common English words.
-          Word sets can be modified and the language can be changed.
+          The word sets can be modified.
         </p>
         <p className={styles.infoTextSubHeader}>
           <FontAwesomeIcon className={styles.optionIcon} icon={faChartBar} />{" "}
