@@ -34,6 +34,16 @@
   .textDisplay {
     font-size: 2.5vh;
   }
+
+  .underlinedWord {
+    text-underline-offset: 0.6vh !important;
+  }
+}
+
+@media only screen and (max-height: 1600px) {
+  .underlinedWord {
+    text-underline-offset: 0.8vh !important;
+  }
 }
 
 .underlinedWord {

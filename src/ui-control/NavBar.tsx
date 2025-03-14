@@ -5,6 +5,7 @@ import {
   faKeyboard,
   faInfoCircle,
   faMask,
+  faMasksTheater,
 } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "../context/ThemeContext";
 import { InfoModal } from "../components/InfoModal";
@@ -34,7 +35,7 @@ const NavBar: React.FC = () => {
   return (
     <div className={`${styles.bar} ${currentTheme}`}>
       <div className={styles.logo}>
-        <FontAwesomeIcon className={styles.icon} icon={faMask} />
+        <FontAwesomeIcon className={styles.icon} icon={faMasksTheater} />
         <h1 className={styles.title}>TypeMime</h1>
       </div>
       <button className={styles.button} onClick={handleClickRefresh}>
