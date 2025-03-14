@@ -9,6 +9,13 @@ import { accuracy } from "../helpers/accuracy";
 import { useSound } from "../context/SoundContext";
 import { useLanguage } from "../context/LanguageContext";
 
+/**
+ * Main game loop is handled in this component
+ * This component handles user input and display text
+ * Updates the display text accordingly as user starts typing
+ * Displays the end result when the timer runs down
+ */
+
 interface Props {
   timerValue: number;
   setDisableControlBar: React.Dispatch<React.SetStateAction<boolean>>;

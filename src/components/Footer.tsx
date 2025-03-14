@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
           <FontAwesomeIcon icon={faLinkedin} size="2x" />
         </a>
         <a
-          href="https://github.com/priyantaislam/typeDash"
+          href="https://github.com/priyantaislam/typeMime"
           target="_blank"
           rel="noopener noreferrer"
         >

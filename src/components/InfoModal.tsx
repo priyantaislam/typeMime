@@ -59,7 +59,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ isOpen, onRequestClose }) => {
         <p className={styles.infoText}>
           Check out the source code on{" "}
           <a
-            href="https://github.com/"
+            href="https://github.com/priyantaislam/typeMime"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.infoText}
